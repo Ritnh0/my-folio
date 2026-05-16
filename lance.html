@@ -973,6 +973,37 @@
             </div>
 
             <div>
+              <p class="card-num">Solução aplicada</p>
+              <h4 class="card-title">Fallback de CEP: do problema ao fluxo de recuperação</h4>
+              <p class="card-desc">50% dos clientes tiveram dificuldade no cálculo de frete. A partir desse dado, construímos dois fallbacks para não perder a venda por causa de um erro de CEP.</p>
+
+              <figure>
+                <h5 class="fig-heading">Fallback 1 e 2: botão "Não sei o meu CEP" permite ao cliente escolher o bairro e receber o orçamento direto no site, sem depender do número do CEP</h5>
+                <img src="assets/fallback1.png" alt="Botão Não sei o meu CEP e seleção por bairro">
+              </figure>
+              <figure>
+                <img src="assets/fallback2.png" alt="Seleção de bairro para cálculo de frete">
+              </figure>
+
+              <figure>
+                <h5 class="fig-heading">Fallback 3: se o CEP do cliente não estiver na nossa base de entrega, ele envia o CEP pelo WhatsApp e o vendedor passa o orçamento manualmente, reduzindo o risco de perder a venda por falha no sistema</h5>
+                <img src="assets/fallback3.png" alt="Arquitetura de fallback para CEP não atendido via WhatsApp">
+              </figure>
+
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">Lógica da arquitetura</p>
+                <p>CEP reconhecido? Orçamento automático no site. CEP desconhecido? Cliente envia pelo WhatsApp e o vendedor responde. Nenhum cliente fica sem resposta por falha técnica.</p>
+              </div>
+
+              <div class="tags">
+                <span class="tag">UX</span>
+                <span class="tag">Arquitetura de informação</span>
+                <span class="tag">Redução de fricção</span>
+                <span class="tag">Shopify</span>
+              </div>
+            </div>
+
+            <div>
               <p class="card-num">Problema 01</p>
               <h4 class="card-title">Jornada longa do vendedor comissionado</h4>
               <p class="card-desc">Atendimento manual no WhatsApp até a noite atendendo cliente para fechar venda.</p>
