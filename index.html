@@ -427,9 +427,15 @@
 
     figure { margin: 1.5rem 0; }
     figure img { width: 100%; border: 1px solid var(--border); }
-    figcaption {
-      font-size: .72rem; color: var(--text-muted);
-      margin-top: .5rem; text-align: center; font-style: italic;
+
+    .fig-heading {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: .65rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
     }
 
     .img-wide {
@@ -440,7 +446,6 @@
       min-width: 580px; width: 100%;
       border: 1px solid var(--border);
     }
-    .img-wide + figcaption { margin-top: .25rem; margin-bottom: 1rem; }
 
     .sol-list { display: flex; flex-direction: column; gap: .5rem; margin: 1rem 0; }
     .sol-list li {
@@ -707,12 +712,12 @@
               <h4 class="card-title">Jornada longa do vendedor</h4>
               <p class="card-desc">Atendimento manual no WhatsApp até a madrugada, sem escala e sem autonomia para o cliente finalizar a compra.</p>
               <figure>
+                <h5 class="fig-heading">Pedidos chegando após as 19h — sem nenhum atendimento manual</h5>
                 <img src="assets/print-vendas-a-noite.jpeg" alt="Notificações Shopify de pedidos chegando à noite">
-                <figcaption>Pedidos chegando após as 19h — sem nenhum atendimento manual</figcaption>
               </figure>
               <figure>
+                <h5 class="fig-heading">UX Writing guiando o cliente ao site fora do horário de atendimento</h5>
                 <img src="assets/seo-uxwriting.jpeg" alt="WhatsApp com copy direcionando ao site">
-                <figcaption>UX Writing guiando o cliente ao site fora do horário de atendimento</figcaption>
               </figure>
               <ul class="sol-list">
                 <li>✓ E-commerce criado para receber clientes à noite — compra self-service, sem atendimento manual</li>
@@ -731,8 +736,8 @@
               <h4 class="card-title">Muitos leads, baixa conversão</h4>
               <p class="card-desc">Desk research + benchmark revelaram que clientes buscam ambientes completos e que montagem é diferencial decisivo.</p>
               <figure>
+                <h5 class="fig-heading">Com a adoção do serviço de montagem, ficamos parelhos aos concorrentes que já ofereciam esse diferencial.</h5>
                 <img src="assets/benchmark.png" alt="Benchmark antes e depois de aplicar UX">
-                <figcaption>Com a adoção do serviço de montagem, ficamos parelhos aos concorrentes que já ofereciam esse diferencial.</figcaption>
               </figure>
               <div class="info-box">
                 <p class="box-label">Insights da desk research</p>
@@ -746,8 +751,8 @@
                 </div>
               </div>
               <figure>
+                <h5 class="fig-heading">Framework completo disponível para download ou visualização no Figma.</h5>
                 <img src="assets/multiplo-alinhamento.png" alt="Framework Múltiplo Alinhamento do serviço de montagem">
-                <figcaption>Framework completo disponível para download ou visualização no Figma.</figcaption>
               </figure>
               <div class="btn-row">
                 <a href="https://drive.google.com/file/d/1RaCIFCcegSqTw-ey16a9FX7375a014YA/view?usp=sharing" target="_blank" class="btn btn-ghost">⬇ baixar framework</a>
@@ -775,29 +780,29 @@
               <h4 class="card-title">Sem dados, sem método</h4>
               <p class="card-desc">Nenhum acompanhamento de comportamento para embasar decisões de design e priorização de melhorias.</p>
               <figure>
+                <h5 class="fig-heading">Top pages: Home, Guarda-Roupas e Cozinhas — priorizadas para monitoramento no Hotjar</h5>
                 <img src="assets/google-analytics4.jpeg" alt="Painel Google Analytics 4 com páginas mais acessadas">
-                <figcaption>Top pages: Home, Guarda-Roupas e Cozinhas — priorizadas para monitoramento no Hotjar</figcaption>
               </figure>
               <figure>
+                <h5 class="fig-heading">Apenas 60,1% dos usuários chegavam até os produtos — o texto SEO no topo empurrava o catálogo para baixo do fold.</h5>
                 <img src="assets/hotjar-attention.png" alt="Hotjar scrollmap antes da melhoria">
-                <figcaption>Apenas 60,1% dos usuários chegavam até os produtos — o texto SEO no topo empurrava o catálogo para baixo do fold.</figcaption>
               </figure>
               <div class="info-box">
                 <p class="box-label">diagnóstico</p>
                 <p>O texto SEO extenso no topo da página empurrava os produtos para baixo do fold, escondendo o catálogo logo na primeira visão do usuário.</p>
               </div>
+              <h5 class="fig-heading">v1 → v2 → v3: filtros visuais, filtro de preço e produtos visíveis na primeira dobra</h5>
               <div class="img-wide">
                 <img src="assets/melhoria-craft.png" alt="Evolução do craft da interface v1 v2 v3">
               </div>
-              <figcaption style="text-align:center;font-size:.72rem;color:var(--text-muted);margin-bottom:1rem">v1 → v2 → v3: filtros visuais, filtro de preço e produtos visíveis na primeira dobra</figcaption>
               <ul class="sol-list">
                 <li>✓ Seletor visual de tipo de modelo (casal, solteiro, espelhado, infantil)</li>
                 <li>✓ Filtro de preço adicionado</li>
                 <li>✓ Imagens dos móveis visíveis já na primeira dobra</li>
               </ul>
               <figure>
+                <h5 class="fig-heading">Após a melhoria: 100% dos usuários chegam até os produtos.</h5>
                 <img src="assets/hotjar-attention2.png" alt="Hotjar scrollmap após melhoria">
-                <figcaption>Após a melhoria: 100% dos usuários chegam até os produtos.</figcaption>
               </figure>
               <div class="info-box accent">
                 <p class="box-label">decisão técnica</p>
