@@ -6,26 +6,25 @@
   <title>Paulo Pereira — UX Designer</title>
   <meta name="description" content="Portfólio de Paulo Pereira, UX Designer Junior. Crio experiências digitais que vendem — do tráfego ao e-commerce.">
   <meta property="og:title" content="Paulo Pereira — UX Designer">
-  <meta property="og:description" content="Case Urso Móveis: de 0,45% para 1,23% de CRO. E-commerce construído do zero.">
+  <meta property="og:description" content="Case Urso Móveis: de 0,45% para 1,23% de CRO.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Noto+Sans+Georgian:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font-family-01: Bricolage Grotesque (títulos) · Font-family-02: Inter (corpo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ================================================
        DESIGN SYSTEM
-       Paleta: Laranja #f2790e · Marrom #5c3a22
-                Bege #E5D8C6 · Dark #0C111D · Branco #FFFFFF
-       Tipos: Poppins Bold (títulos) · Noto Sans Georgian (corpo)
+       Paleta Urso: Laranja #f2790e · Dark #0C111D
+       Tipografia: Bricolage Grotesque (headings) · Inter (body)
     ================================================ */
     :root {
       --orange:        #f2790e;
       --orange-light:  #ff9a3c;
       --orange-dim:    rgba(242,121,14,.12);
       --orange-border: rgba(242,121,14,.28);
-      --brown:         #5c3a22;
       --beige:         #E5D8C6;
       --beige-dim:     rgba(229,216,198,.07);
       --dark:          #0C111D;
@@ -40,8 +39,9 @@
       --border-orange: rgba(242,121,14,.3);
       --figma-purple:  #7B61FF;
 
-      --font-heading: 'Poppins', sans-serif;
-      --font-body:    'Noto Sans Georgian', sans-serif;
+      /* Font-family-01: títulos / Font-family-02: corpo */
+      --font-heading: 'Bricolage Grotesque', sans-serif;
+      --font-body:    'Inter', sans-serif;
 
       --r-sm:   6px;
       --r-md:   12px;
@@ -85,80 +85,169 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 1.25rem;
-      background: rgba(12,17,29,.88);
+      background: rgba(12,17,29,.85);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
       font-family: var(--font-heading);
-      font-size: .75rem; font-weight: 700;
+      font-size: .78rem; font-weight: 700;
       color: var(--orange);
-      letter-spacing: .1em; text-transform: uppercase;
+      letter-spacing: .08em; text-transform: uppercase;
     }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
       font-size: .8rem; color: var(--text-muted);
+      font-family: var(--font-body);
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--orange); }
 
     /* ================================================
-       HERO
+       HERO — grama / Lance
+       Imagens: assets/grama.jpg (background) · assets/paulo.jpg (foto)
     ================================================ */
     #hero {
+      position: relative;
       min-height: 100svh;
-      display: flex; align-items: center;
-      padding-top: calc(5rem + 60px);
-      position: relative; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
-    #hero::before {
-      content: '';
-      position: absolute; top: -15%; right: -5%;
-      width: 55vw; height: 55vw;
-      background: radial-gradient(circle, rgba(242,121,14,.07) 0%, transparent 68%);
-      pointer-events: none;
-    }
-    .hero-content { position: relative; }
 
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--orange-dim);
-      border: 1px solid var(--orange-border);
-      color: var(--orange);
-      font-size: .7rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .1em;
-      padding: .35rem 1rem;
-      border-radius: var(--r-full);
-      margin-bottom: 1.5rem;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--orange); border-radius: 50%;
-      animation: blink 2s infinite;
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      border-radius: 0;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
 
-    #hero h1 {
-      font-size: clamp(2.6rem, 10vw, 5.5rem);
-      color: var(--white);
-      letter-spacing: -.02em;
-      margin-bottom: .75rem;
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: calc(60px + 2.5rem) 2.25rem 2rem;
     }
-    #hero h1 span { color: var(--orange); }
 
-    .hero-role {
+    /* Left accent line (from Figma) */
+    .hero-accent {
+      width: 2px;
+      height: 22px;
+      background: rgba(255,255,255,.7);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name {
       font-family: var(--font-heading);
-      font-size: clamp(1.2rem, 4vw, 2rem);
-      color: var(--beige);
-      margin-bottom: 1.5rem;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 6vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      margin-bottom: 1rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
     }
-    .hero-desc {
-      font-size: 1.05rem; color: var(--text-secondary);
-      max-width: 420px;
-      margin-bottom: 2.5rem; line-height: 1.85;
+    .hero-name .role {
+      display: block;
+      font-size: .72em;
+      margin-top: .2em;
     }
-    .hero-contacts { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+    .hero-p {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(.8rem, 3vw, .95rem);
+      line-height: 1.2;
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      margin-top: .5rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .hero-p.hl {
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+    }
+
+    .hero-photo {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-photo img {
+      width: 160px;
+      height: auto;
+      border-radius: 0;
+      filter: drop-shadow(0px 4px 4px black);
+    }
+
+    @media (min-width: 640px) {
+      .hero-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .hero-text { flex: 1; }
+      .hero-photo {
+        margin-top: 0;
+        padding-top: calc(60px + 1rem);
+        align-items: flex-start;
+      }
+      .hero-photo img { width: 180px; }
+    }
+
+    /* ================================================
+       EXPERIENCE CARDS (UX Unicórnio · Design Boost · Yes)
+    ================================================ */
+    #experiencia {
+      padding: 2rem 0 3rem;
+      background: var(--white);
+    }
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .exp-card {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 14px;
+      box-shadow: 0px 4px 2px rgba(0,0,0,.25);
+    }
+    .exp-card.lg { border-radius: 8px; align-items: flex-start; }
+    .exp-logo {
+      width: 40px; height: 40px;
+      object-fit: contain;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+    .exp-logo.lg {
+      width: 68px; height: 68px; border-radius: 20px;
+    }
+    .exp-text {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #101828;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .exp-text strong { font-weight: 600; }
+    .c-pink   { color: #fd158d; }
+    .c-purple { color: #8d47ea; }
+    .c-blue   { color: #0052b4; }
+    .c-yellow { color: #e68f03; }
+    .c-red    { color: #cd222a; }
 
     /* ================================================
        BUTTONS
@@ -171,17 +260,14 @@
       font-family: var(--font-body);
       transition: all .2s; cursor: pointer; border: none;
     }
-    .btn-primary {
-      background: var(--orange); color: var(--white);
-    }
+    .btn-primary { background: var(--orange); color: var(--white); }
     .btn-primary:hover {
       background: var(--orange-light);
       transform: translateY(-2px);
       box-shadow: 0 6px 24px rgba(242,121,14,.38);
     }
     .btn-ghost {
-      background: transparent;
-      color: var(--text-secondary);
+      background: transparent; color: var(--text-secondary);
       border: 1px solid var(--border);
     }
     .btn-ghost:hover { border-color: var(--border-orange); color: var(--orange); }
@@ -346,7 +432,6 @@
       margin-top: .5rem; text-align: center; font-style: italic;
     }
 
-    /* scroll-x for wide images */
     .img-wide {
       overflow-x: auto; -webkit-overflow-scrolling: touch;
       margin: 1.5rem 0;
@@ -357,7 +442,6 @@
     }
     .img-wide + figcaption { margin-top: .25rem; margin-bottom: 1rem; }
 
-    /* solutions list */
     .sol-list { display: flex; flex-direction: column; gap: .5rem; margin: 1rem 0; }
     .sol-list li {
       font-size: .85rem; color: var(--text-secondary);
@@ -367,7 +451,6 @@
       border-radius: var(--r-sm);
     }
 
-    /* tags */
     .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
     .tag {
       font-size: .68rem; padding: .2rem .75rem;
@@ -375,7 +458,6 @@
       border-radius: var(--r-full); color: var(--text-muted); font-weight: 500;
     }
 
-    /* info box */
     .info-box {
       background: var(--dark-3);
       border: 1px solid var(--border);
@@ -390,11 +472,9 @@
     }
     .info-box p { font-size: .85rem; color: var(--text-secondary); line-height: 1.8; }
 
-    /* insights */
     .insight-list { display: flex; flex-direction: column; gap: .4rem; margin: .75rem 0; }
     .insight-list li { font-size: .85rem; color: var(--text-secondary); }
 
-    /* numbered steps */
     .num-list { counter-reset: s; display: flex; flex-direction: column; gap: .75rem; }
     .num-list li {
       counter-increment: s;
@@ -412,7 +492,6 @@
       flex-shrink: 0; margin-top: 2px;
     }
 
-    /* btn row */
     .btn-row { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
 
     /* ================================================
@@ -496,8 +575,6 @@
     @media (min-width: 768px) {
       .container { padding: 0 2rem; }
       .metrics-grid { grid-template-columns: repeat(4, 1fr); }
-      .hero-desc { font-size: 1.15rem; }
-      #hero h1 { font-size: clamp(3.5rem, 8vw, 5.5rem); }
     }
   </style>
 </head>
@@ -512,24 +589,66 @@
   </div>
 </nav>
 
+
 <!-- ================================================
-     HERO
+     HERO — grama + Lance
+     Salvar em assets/:
+       grama.jpg  → imagem de fundo (campo de futebol)
+       paulo.jpg  → foto do Paulo (personagem)
 ================================================ -->
 <section id="hero">
+  <div class="hero-bg">
+    <img src="assets/grama.png" alt="">
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-accent"></div>
+      <h1 class="hero-name">
+        Opa Lance, eu sou o Paulo!
+        <span class="role">UX Designer Junior</span>
+      </h1>
+      <p class="hero-p">Crio experiências digitais que vendem.</p>
+      <p class="hero-p hl">De campanhas de tráfego, estratégias de negócio até e-commerces/sites completos.</p>
+      <p class="hero-p">Vivo no Rio de Janeiro. Conheça meu portfolio</p>
+    </div>
+
+    <div class="hero-photo">
+      <img src="assets/paulo.png" alt="Paulo Pereira">
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     EXPERIENCE — UX Unicórnio · Design Boost · Yes
+================================================ -->
+<section id="experiencia">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">UX Designer Junior · Rio de Janeiro</div>
-      <h1>Opa, eu sou o <span>Paulo!</span></h1>
-      <p class="hero-role">Crio experiências digitais que vendem.</p>
-      <p class="hero-desc">
-        De campanhas de tráfego, estratégias de negócio até e-commerces completos.
-        Conheça meu portfólio.
-      </p>
-      <div class="hero-contacts">
-        <a href="https://www.linkedin.com/in/paulo-victor-pereira/" target="_blank" class="btn btn-primary">LinkedIn</a>
-        <a href="mailto:paulovictorcarregal@gmail.com" class="btn btn-ghost">E-mail</a>
-        <a href="https://wa.me/5521974395509" target="_blank" class="btn btn-ghost">WhatsApp</a>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <img src="assets/uxunicornio.png" alt="UX Unicórnio" class="exp-logo">
+        <p class="exp-text">
+          Estudante de <strong>IA/UX Design</strong> no Programa <strong class="c-pink">UX Unicórnio</strong>
+        </p>
       </div>
+
+      <div class="exp-card">
+        <img src="assets/designboost.png" alt="Design Boost" class="exp-logo">
+        <p class="exp-text">
+          Estudante de <strong>UI Design</strong> no <strong class="c-purple">Design Boost</strong>
+        </p>
+      </div>
+
+      <div class="exp-card lg">
+        <img src="assets/yes.png" alt="Yes Idiomas" class="exp-logo lg">
+        <p class="exp-text">
+          Adquiri <strong class="c-blue">Inglês Fluente</strong> em 5 anos<br>
+          <strong class="c-yellow">Espanhol Básico</strong> em 1 ano na <strong class="c-red">Yes Idiomas</strong>
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -547,7 +666,6 @@
       <p class="case-meta">Loja de móveis física no RJ. Vendas 100% via vendedor + WhatsApp. Criou seu primeiro e-commerce em 2025.</p>
     </div>
 
-    <!-- Big Picture -->
     <div class="bigpicture-wrap">
       <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup do site Urso Móveis">
       <a href="https://ursomoveis.com" target="_blank" class="bigpicture-link">
@@ -555,7 +673,6 @@
       </a>
     </div>
 
-    <!-- Problem Statement -->
     <div class="problem-statement">
       <p class="label-tag">problem statement</p>
       <p class="problem-quote">"Vendedor trabalhando até de madrugada, leads chegando mas não convertendo, e zero visibilidade sobre o porquê."</p>
@@ -566,10 +683,10 @@
       </ul>
     </div>
 
-    <!-- ====== STEPPER ====== -->
+    <!-- STEPPER -->
     <div class="stepper">
 
-      <!-- STEP 1 — RESEARCH & STRATEGY -->
+      <!-- STEP 1 -->
       <div class="step">
         <div class="step-header">
           <div class="step-dot-col">
@@ -585,7 +702,6 @@
         <div class="step-detail" id="step-1-detail">
           <div class="step-detail-inner">
 
-            <!-- P01 -->
             <div>
               <p class="card-num">Problema 01</p>
               <h4 class="card-title">Jornada longa do vendedor</h4>
@@ -610,7 +726,6 @@
               </div>
             </div>
 
-            <!-- P02 -->
             <div>
               <p class="card-num">Problema 02</p>
               <h4 class="card-title">Muitos leads, baixa conversão</h4>
@@ -655,7 +770,6 @@
               </div>
             </div>
 
-            <!-- P03 -->
             <div>
               <p class="card-num">Problema 03</p>
               <h4 class="card-title">Sem dados, sem método</h4>
@@ -690,20 +804,15 @@
                 <p>O texto SEO foi ocultado visualmente na interface mas permanece ativo no HTML — mantendo o ranqueamento nos buscadores sem prejudicar a experiência do usuário.</p>
               </div>
               <div class="tags">
-                <span class="tag">GA4</span>
-                <span class="tag">Hotjar</span>
-                <span class="tag">CRO</span>
-                <span class="tag">UI craft</span>
-                <span class="tag">SEO</span>
+                <span class="tag">GA4</span><span class="tag">Hotjar</span><span class="tag">CRO</span><span class="tag">UI craft</span><span class="tag">SEO</span>
               </div>
             </div>
 
           </div>
         </div>
-      </div><!-- /step-1 -->
+      </div>
 
-
-      <!-- STEP 2 — ESTRATÉGIA & ARQUITETURA -->
+      <!-- STEP 2 -->
       <div class="step">
         <div class="step-header">
           <div class="step-dot-col">
@@ -718,48 +827,41 @@
         </div>
         <div class="step-detail" id="step-2-detail">
           <div class="step-detail-inner">
-
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Business Model Canvas</h4>
               <p class="card-desc">Modelo de negócio completo: parceiros, atividades chave, proposta de valor, canais, segmentos e estrutura de custo.</p>
               <figure><img src="assets/bmc.png" alt="Business Model Canvas da Urso Móveis"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 02</p>
               <h4 class="card-title">Value Proposition Canvas</h4>
               <p class="card-desc">Mapeamento das dores e ganhos do cliente carioca cruzado com a proposta de valor da Urso.</p>
               <figure><img src="assets/vpc.png" alt="Value Proposition Canvas da Urso Móveis"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 03</p>
               <h4 class="card-title">Funil de Vendas — Site + WhatsApp</h4>
               <p class="card-desc">Dois funis integrados com remarketing cruzado, dobrando a chance de conversão em cada canal.</p>
               <figure><img src="assets/funil.png" alt="Funil de vendas Site e WhatsApp"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 04</p>
               <h4 class="card-title">Matriz Impacto × Esforço</h4>
               <p class="card-desc">Priorização do cadastro de produtos no catálogo — Quick Wins primeiro, Major Projects depois.</p>
               <figure><img src="assets/matriz-impacto-esfor%C3%A7o.png" alt="Matriz impacto esforço"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 05</p>
               <h4 class="card-title">Priorização de Problemas</h4>
               <p class="card-desc">Backlog priorizado por score de 1 a 13. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
               <figure><img src="assets/Prioriza%C3%A7%C3%A3o%20de%20problemas.png" alt="Priorização de problemas por score"></figure>
             </div>
-
           </div>
         </div>
-      </div><!-- /step-2 -->
+      </div>
 
-
-      <!-- STEP 3 — JORNADAS & PERSONAS -->
+      <!-- STEP 3 -->
       <div class="step">
         <div class="step-header">
           <div class="step-dot-col">
@@ -774,45 +876,39 @@
         </div>
         <div class="step-detail" id="step-3-detail">
           <div class="step-detail-inner">
-
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Personas</h4>
               <p class="card-desc">João &amp; Leticia (casal mudando de casa) e Pietra (renovando ambiente). Baseadas em comportamento real dos clientes.</p>
               <figure><img src="assets/personas.png" alt="Personas João e Leticia e Pietra"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 02</p>
               <h4 class="card-title">Jornada de Experiência</h4>
               <p class="card-desc">Mapeamento simplificado com 3 atores: Cliente, Vendedor e Entregador — do estímulo ao pós-montagem.</p>
               <figure><img src="assets/jornada%20de%20experiencia.png" alt="Jornada de experiência com 3 atores"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 03</p>
               <h4 class="card-title">Jornada do Usuário — João &amp; Leticia</h4>
-              <p class="card-desc">5 fases com sentimentos, falas e oportunidades. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+              <p class="card-desc">5 fases com sentimentos, falas e oportunidades. O trabalho continua.</p>
               <div class="img-wide">
                 <img src="assets/jornada%20do%20usuario-personacasal.png" alt="Jornada do usuário persona casal">
               </div>
             </div>
-
             <div>
               <p class="card-num">Artefato 04</p>
               <h4 class="card-title">Jornada do Usuário — Pietra</h4>
-              <p class="card-desc">Foco em renovação de ambiente e produtos de médio-baixo ticket. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+              <p class="card-desc">Foco em renovação de ambiente e produtos de médio-baixo ticket. O trabalho continua.</p>
               <div class="img-wide">
                 <img src="assets/jornada%20do%20usuario-personasolteiro.png" alt="Jornada do usuário persona solteira">
               </div>
             </div>
-
           </div>
         </div>
-      </div><!-- /step-3 -->
+      </div>
 
-
-      <!-- STEP 4 — WIREFRAMES & UI -->
+      <!-- STEP 4 -->
       <div class="step">
         <div class="step-header">
           <div class="step-dot-col">
@@ -827,40 +923,33 @@
         </div>
         <div class="step-detail" id="step-4-detail">
           <div class="step-detail-inner">
-
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Sitemap</h4>
               <p class="card-desc">Estrutura completa das páginas — Landing Page, Categorias e Página do Móvel com todos os componentes mapeados.</p>
-              <div class="img-wide">
-                <img src="assets/sitemap.png" alt="Sitemap do site Urso Móveis">
-              </div>
+              <div class="img-wide"><img src="assets/sitemap.png" alt="Sitemap do site Urso Móveis"></div>
               <div class="btn-row">
                 <a href="https://drive.google.com/file/d/1v9qJq-Uqydi-9mFQi2Ga3SI5JIzMwpl2/view?usp=sharing" target="_blank" class="btn btn-drive">ver completo no Drive</a>
               </div>
             </div>
-
             <div>
               <p class="card-num">Artefato 02</p>
               <h4 class="card-title">Guia de Cores</h4>
               <p class="card-desc">Sistema de cores com tokens: laranja primário #f2790e, marrom, bege e escala de cinzas — todos com ratios de contraste WCAG.</p>
               <figure><img src="assets/cores.png" alt="Guia de cores do design system Urso"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 03</p>
               <h4 class="card-title">Tipografia</h4>
               <p class="card-desc">Poppins para títulos e displays. Noto Sans Georgian para corpo de texto. Escala tipográfica de 80px até 18px.</p>
               <figure><img src="assets/tipografia.png" alt="Guia de tipografia do design system Urso"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 04</p>
               <h4 class="card-title">Energia da Cor Laranja</h4>
               <p class="card-desc">Decisão de cor embasada em pesquisa cultural — laranja representa equilíbrio, coragem, energia, aprendizado e desejo.</p>
               <figure><img src="assets/colours-in-culture.png" alt="Colours in Culture — significado do laranja"></figure>
             </div>
-
             <div>
               <p class="card-num">Artefato 05</p>
               <h4 class="card-title">Sites de Inspiração</h4>
@@ -868,15 +957,11 @@
               <figure><img src="assets/Inspira%C3%A7%C3%B5es.png" alt="Sites de inspiração para o design do e-commerce"></figure>
               <div class="btn-row">
                 <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3582" target="_blank" class="btn btn-figma">
-                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true">
-                    <path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/>
-                  </svg>
+                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/></svg>
                   ver no Figma
                 </a>
               </div>
             </div>
-
             <div>
               <p class="card-num">Artefato 06</p>
               <h4 class="card-title">Rabisco Frame</h4>
@@ -884,28 +969,22 @@
               <figure><img src="assets/rabiscoframe.png" alt="Rabisco frame das telas do e-commerce"></figure>
               <div class="btn-row">
                 <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3521" target="_blank" class="btn btn-figma">
-                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true">
-                    <path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/>
-                  </svg>
+                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/></svg>
                   ver no Figma
                 </a>
               </div>
             </div>
-
             <div>
               <p class="card-num">Artefato 07</p>
               <h4 class="card-title">Barra de Menu — Antes e Depois</h4>
               <p class="card-desc">Menu em lista simplificado para grid visual 3D com ícones por categoria — menos opções visíveis, mais desejo e clareza de escolha.</p>
               <figure><img src="assets/barramenu.png" alt="Barra de menu antes e depois da melhoria"></figure>
             </div>
-
           </div>
         </div>
-      </div><!-- /step-4 -->
+      </div>
 
-
-      <!-- STEP 5 — IMPLEMENTAÇÃO & CRO -->
+      <!-- STEP 5 -->
       <div class="step">
         <div class="step-header">
           <div class="step-dot-col">
@@ -919,7 +998,6 @@
         </div>
         <div class="step-detail" id="step-5-detail">
           <div class="step-detail-inner">
-
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Painel Shopify — controle operacional</h4>
@@ -927,7 +1005,6 @@
               <figure><img src="assets/shopify-panel.png" alt="Painel admin do Shopify da Urso Móveis"></figure>
               <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem">Canais ativos: Loja virtual · Agêntico · Facebook &amp; Instagram · Judge.me Reviews</p>
             </div>
-
             <div>
               <p class="card-num">Artefato 02</p>
               <h4 class="card-title">Search &amp; Discovery — dados de pesquisa interna</h4>
@@ -935,7 +1012,6 @@
               <figure><img src="assets/searchdiscovery.png" alt="Painel Search and Discovery do Shopify"></figure>
               <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem">Taxa de cliques 78,91% ↑8% · Taxa de compra 1,87% ↑66% · Gaps: guardaroupa, armário solteiro, móveis infantis</p>
             </div>
-
             <div>
               <p class="card-num">Artefato 03</p>
               <h4 class="card-title">Como funciona o Claude Code + Shopify CLI</h4>
@@ -951,14 +1027,12 @@
                 <p>Com esse ciclo, uma ideia de melhoria vai do pensamento ao ar em minutos. Botão em outro lugar, copy diferente, elemento removido — a gente testa rápido e segue com o que funciona.</p>
               </div>
             </div>
-
           </div>
         </div>
-      </div><!-- /step-5 -->
+      </div>
 
     </div><!-- /stepper -->
 
-    <!-- MÉTRICAS -->
     <div class="metrics-grid">
       <div class="metric-card">
         <span class="metric-val">3.8k</span>
