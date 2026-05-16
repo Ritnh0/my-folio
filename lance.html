@@ -1419,6 +1419,12 @@
         b.textContent = open ? 'ocultar' : 'ver detalhes';
         b.classList.toggle('is-open', open);
       });
+      // Ao fechar: volta ao topo do step (descontando a nav fixa)
+      if (!open) {
+        const stepEl = detail.closest('.step');
+        const top = stepEl.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     });
   });
 </script>
