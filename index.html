@@ -136,14 +136,6 @@
       padding: calc(60px + 2.5rem) 2.25rem 2rem;
     }
 
-    /* Left accent line (from Figma) */
-    .hero-accent {
-      width: 2px;
-      height: 22px;
-      background: rgba(255,255,255,.7);
-      margin-bottom: 0.75rem;
-    }
-
     .hero-name {
       font-family: var(--font-heading);
       font-weight: 800;
@@ -151,13 +143,31 @@
       line-height: 1.2;
       color: var(--white);
       text-shadow: 1px 4px 4px black;
-      margin-bottom: 1rem;
+      margin-bottom: .5rem;
       font-variation-settings: 'opsz' 14, 'wdth' 100;
     }
-    .hero-name .role {
-      display: block;
-      font-size: .72em;
-      margin-top: .2em;
+
+    /* Cargo com barra azul à esquerda */
+    .role-wrap {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: 1rem;
+    }
+    .hero-accent {
+      width: 3px;
+      height: 20px;
+      background: #4a9fff;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .role {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(.95rem, 3.5vw, 1.15rem);
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
     }
 
     .hero-p {
@@ -204,11 +214,16 @@
     }
 
     /* ================================================
-       EXPERIENCE CARDS (UX Unicórnio · Design Boost · Yes)
+       EXPERIENCE CARDS — dentro do hero (sobre a grama)
     ================================================ */
+    .hero-exp {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 1.25rem 3rem;
+    }
     #experiencia {
-      padding: 2rem 0 3rem;
-      background: var(--white);
+      padding: 0;
+      background: transparent;
     }
     .exp-list {
       display: flex;
@@ -306,13 +321,15 @@
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
     }
-    .bigpicture-link {
-      display: inline-flex; align-items: center; gap: .5rem;
-      margin-top: 1rem;
-      font-size: .82rem; color: var(--orange);
-      transition: gap .2s;
+    .btn-live {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      padding: .9rem 2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      border-radius: var(--r-full);
     }
-    .bigpicture-link:hover { gap: .85rem; }
 
     /* ================================================
        PROBLEM STATEMENT
@@ -381,18 +398,22 @@
       margin-bottom: 1rem;
     }
     .expand-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: .68rem; font-family: var(--font-body);
-      font-weight: 600; text-transform: uppercase;
+      background: var(--orange);
+      border: none;
+      color: var(--white);
+      font-size: .72rem; font-family: var(--font-body);
+      font-weight: 700; text-transform: uppercase;
       letter-spacing: .1em;
-      padding: .35rem 1rem;
+      padding: .45rem 1.25rem;
       border-radius: var(--r-full);
       cursor: pointer; transition: all .2s;
     }
-    .expand-btn:hover,
-    .expand-btn.is-open { border-color: var(--border-orange); color: var(--orange); }
+    .expand-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .expand-btn.is-open {
+      background: transparent;
+      border: 1px solid var(--border-orange);
+      color: var(--orange);
+    }
 
     /* ================================================
        STEP DETAIL — accordion
@@ -456,11 +477,15 @@
       border-radius: var(--r-sm);
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
     .tag {
-      font-size: .68rem; padding: .2rem .75rem;
-      background: var(--dark-4); border: 1px solid var(--border);
-      border-radius: var(--r-full); color: var(--text-muted); font-weight: 500;
+      font-size: .75rem; padding: .35rem 1rem;
+      background: var(--orange-dim);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--r-full);
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: .04em;
     }
 
     .info-box {
@@ -608,11 +633,11 @@
 
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-accent"></div>
-      <h1 class="hero-name">
-        Opa Lance, eu sou o Paulo!
+      <h1 class="hero-name">Opa Lance, eu sou o Paulo!</h1>
+      <div class="role-wrap">
+        <div class="hero-accent"></div>
         <span class="role">UX Designer Junior</span>
-      </h1>
+      </div>
       <p class="hero-p">Crio experiências digitais que vendem.</p>
       <p class="hero-p hl">De campanhas de tráfego, estratégias de negócio até e-commerces/sites completos.</p>
       <p class="hero-p">Vivo no Rio de Janeiro. Conheça meu portfolio</p>
@@ -622,15 +647,10 @@
       <img src="assets/paulo.png" alt="Paulo Pereira">
     </div>
   </div>
-</section>
 
-
-<!-- ================================================
-     EXPERIENCE — UX Unicórnio · Design Boost · Yes
-================================================ -->
-<section id="experiencia">
-  <div class="container">
-    <div class="exp-list">
+  <!-- Cards de experiência sobre a grama -->
+  <div id="experiencia" class="hero-exp">
+    <div class="exp-list" style="max-width:760px;margin:0 auto;">
 
       <div class="exp-card">
         <img src="assets/uxunicornio.png" alt="UX Unicórnio" class="exp-logo">
@@ -673,18 +693,18 @@
 
     <div class="bigpicture-wrap">
       <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup do site Urso Móveis">
-      <a href="https://ursomoveis.com" target="_blank" class="bigpicture-link">
-        ver site ao vivo → ursomoveis.com
+      <a href="https://ursomoveis.com" target="_blank" class="btn btn-primary btn-live">
+        🌐&nbsp; Ver site ao vivo — ursomoveis.com
       </a>
     </div>
 
     <div class="problem-statement">
-      <p class="label-tag">problem statement</p>
-      <p class="problem-quote">"Vendedor trabalhando até de madrugada, leads chegando mas não convertendo, e zero visibilidade sobre o porquê."</p>
+      <p class="label-tag">Problemas resolvidos</p>
+      <p class="problem-quote">"Vendedor trabalhando até a noite para vender mais, leads chegando mas não convertendo, e zero visibilidade sobre o porquê."</p>
       <ul class="problem-list">
         <li>🌙 Jornada do vendedor se estendia até à noite respondendo WhatsApp manualmente</li>
-        <li>📉 Muitos leads entrando, baixa conversão — sem saber onde estava a fricção</li>
-        <li>📊 Nenhum método de análise de dados para embasar decisões</li>
+        <li>📉 Muitos leads entrando, baixa conversão, sem saber onde estava o gargalo</li>
+        <li>📊 Nenhum método de análise de dados para tomar boas decisões</li>
       </ul>
     </div>
 
@@ -700,7 +720,7 @@
           </div>
           <div class="step-body">
             <h3>Research &amp; Strategy</h3>
-            <p>Diagnóstico dos 3 problemas com evidências reais.</p>
+            <p>Diagnóstico dos 3 problemas com resultados reais.</p>
             <button class="expand-btn" data-target="step-1-detail">ver detalhes</button>
           </div>
         </div>
@@ -709,14 +729,14 @@
 
             <div>
               <p class="card-num">Problema 01</p>
-              <h4 class="card-title">Jornada longa do vendedor</h4>
-              <p class="card-desc">Atendimento manual no WhatsApp até a madrugada, sem escala e sem autonomia para o cliente finalizar a compra.</p>
+              <h4 class="card-title">Jornada longa do vendedor comissionado</h4>
+              <p class="card-desc">Atendimento manual no WhatsApp até a noite atendendo cliente para fechar venda.</p>
               <figure>
-                <h5 class="fig-heading">Pedidos chegando após as 19h — sem nenhum atendimento manual</h5>
+                <h5 class="fig-heading">Com a criação do site, pedidos chegam a noite sem nenhum atendimento manual, assim consegui mais tempo para estudar e descansar</h5>
                 <img src="assets/print-vendas-a-noite.jpeg" alt="Notificações Shopify de pedidos chegando à noite">
               </figure>
               <figure>
-                <h5 class="fig-heading">UX Writing guiando o cliente ao site fora do horário de atendimento</h5>
+                <h5 class="fig-heading">Mensagem de ausência automática no WhatsApp com UX Writing guiando o cliente ao site fora do horário de atendimento</h5>
                 <img src="assets/seo-uxwriting.jpeg" alt="WhatsApp com copy direcionando ao site">
               </figure>
               <ul class="sol-list">
@@ -795,15 +815,15 @@
               <div class="img-wide">
                 <img src="assets/melhoria-craft.png" alt="Evolução do craft da interface v1 v2 v3">
               </div>
+              <figure>
+                <h5 class="fig-heading">Após a melhoria: 100% dos usuários chegam até os produtos.</h5>
+                <img src="assets/hotjar-attention2.png" alt="Hotjar scrollmap após melhoria">
+              </figure>
               <ul class="sol-list">
                 <li>✓ Seletor visual de tipo de modelo (casal, solteiro, espelhado, infantil)</li>
                 <li>✓ Filtro de preço adicionado</li>
                 <li>✓ Imagens dos móveis visíveis já na primeira dobra</li>
               </ul>
-              <figure>
-                <h5 class="fig-heading">Após a melhoria: 100% dos usuários chegam até os produtos.</h5>
-                <img src="assets/hotjar-attention2.png" alt="Hotjar scrollmap após melhoria">
-              </figure>
               <div class="info-box accent">
                 <p class="box-label">decisão técnica</p>
                 <p>O texto SEO foi ocultado visualmente na interface mas permanece ativo no HTML — mantendo o ranqueamento nos buscadores sem prejudicar a experiência do usuário.</p>
