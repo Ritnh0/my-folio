@@ -495,7 +495,7 @@
       max-height: 0;
       transition: max-height .55s cubic-bezier(.4,0,.2,1);
     }
-    .step-detail.is-open { max-height: 12000px; }
+    .step-detail.is-open { max-height: none; }
     .step-detail-inner {
       display: flex; flex-direction: column;
       gap: 3rem; padding-bottom: 3rem;
@@ -1562,6 +1562,17 @@
       const id     = btn.getAttribute('data-target');
       const detail = document.getElementById(id);
       const open   = detail.classList.toggle('is-open');
+
+      // Altura real do conteúdo para a transição não cortar
+      if (open) {
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      } else {
+        detail.style.maxHeight = detail.scrollHeight + 'px'; // parte do valor atual antes de colapsar
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { detail.style.maxHeight = '0'; });
+        });
+      }
+
       document.querySelectorAll(`.expand-btn[data-target="${id}"]`).forEach(b => {
         b.textContent = open ? 'ocultar' : 'ver detalhes';
         b.classList.toggle('is-open', open);
