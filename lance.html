@@ -280,6 +280,52 @@
     .c-red    { color: #cd222a; }
 
     /* ================================================
+       SOLO CARD — papel no topo do case
+    ================================================ */
+    .solo-card {
+      background: linear-gradient(135deg, rgba(242,121,14,.1), rgba(242,121,14,.03));
+      border: 1px solid var(--border-orange);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .solo-roles {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .solo-role-tag {
+      font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--orange);
+      background: var(--orange-dim);
+      border: 1px solid var(--orange-border);
+      padding: .25rem .85rem; border-radius: var(--r-full);
+    }
+    .solo-desc {
+      font-size: .9rem; color: var(--white);
+      line-height: 1.75; font-family: var(--font-body);
+    }
+
+    /* ================================================
+       STEP ROLE — meu papel dentro de cada step
+    ================================================ */
+    .step-role {
+      display: flex; gap: .75rem;
+      background: rgba(242,121,14,.07);
+      border: 1px solid var(--border-orange);
+      border-radius: var(--r-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .step-role-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .15rem; }
+    .step-role p {
+      font-size: .88rem; color: var(--white);
+      line-height: 1.75; margin: 0;
+    }
+    .step-role strong { color: var(--orange); font-weight: 600; }
+
+    /* ================================================
        BUTTONS
     ================================================ */
     .btn {
@@ -760,6 +806,16 @@
       <p class="case-meta">Loja de móveis online no RJ. Vendas 100% via vendedor + WhatsApp. Criei seu primeiro e-commerce no final de 2025.</p>
     </div>
 
+    <div class="solo-card">
+      <div class="solo-roles">
+        <span class="solo-role-tag">Projeto solo</span>
+        <span class="solo-role-tag">UX Designer</span>
+        <span class="solo-role-tag">Estrategista</span>
+        <span class="solo-role-tag">Implementador</span>
+      </div>
+      <p class="solo-desc">Fui o único responsável por este projeto. Da pesquisa à implementação, sem agência, sem equipe, sem terceirização técnica.</p>
+    </div>
+
     <div class="bigpicture-wrap">
       <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup do site Urso Móveis">
       <a href="https://ursomoveis.com" target="_blank" class="btn btn-primary btn-live">
@@ -795,6 +851,11 @@
         </div>
         <div class="step-detail" id="step-1-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Conduzi o diagnóstico sozinho. Coletei dados via GA4 e Hotjar, fiz a desk research e identifiquei os 3 problemas prioritários sem apoio de agência ou equipe.</p>
+            </div>
 
             <div>
               <p class="card-num">Problema 01</p>
@@ -921,6 +982,12 @@
         </div>
         <div class="step-detail" id="step-2-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Atuei como estrategista de negócio. Construí todos os 5 artefatos (BMC, VPC, Funil, Matriz e Priorização) para estruturar o modelo antes de tocar em qualquer interface.</p>
+            </div>
+
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Business Model Canvas</h4>
@@ -970,6 +1037,12 @@
         </div>
         <div class="step-detail" id="step-3-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Criei as personas e jornadas com base no comportamento real dos clientes da Urso, observado ao longo da operação.</p>
+            </div>
+
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Personas</h4>
@@ -1017,6 +1090,12 @@
         </div>
         <div class="step-detail" id="step-4-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Designer solo. Do rabisco frame ao design system completo, incluindo decisões de tipografia, cor e componentes implementados diretamente no tema Shopify.</p>
+            </div>
+
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Sitemap</h4>
@@ -1092,6 +1171,12 @@
         </div>
         <div class="step-detail" id="step-5-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Atuei como copiloto. Descrevi as mudanças em português, revisei os outputs e validei cada alteração no ar. O Claude Code escreveu e aplicou o código Liquid e CSS.</p>
+            </div>
+
             <div>
               <p class="card-num">Artefato 01</p>
               <h4 class="card-title">Painel Shopify — controle operacional</h4>
@@ -1139,6 +1224,11 @@
         </div>
         <div class="step-detail" id="step-6-detail">
           <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Criei e configurei os dois agentes do zero. Defini os prompts, testei os outputs e integrei ao fluxo operacional da loja como solução de escala.</p>
+            </div>
 
             <div>
               <p class="card-num">Agente 01</p>
