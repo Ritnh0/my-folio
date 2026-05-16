@@ -408,6 +408,14 @@
       border-radius: var(--r-full);
       cursor: pointer; transition: all .2s;
     }
+    .expand-btn::after {
+      content: ' ↓';
+      display: inline-block;
+      transition: transform .25s ease;
+    }
+    .expand-btn.is-open::after {
+      transform: rotate(180deg);
+    }
     .expand-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
     .expand-btn.is-open {
       background: transparent;
