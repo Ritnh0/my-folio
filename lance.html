@@ -947,7 +947,7 @@
                 <ul class="insight-list">
                   <li>📦 Cliente que não comprou: falta de estoque foi o motivo: queria mesa e não havia disponível</li>
                   <li>🚚 50% dos clientes tiveram dificuldade no cálculo de frete pelo site</li>
-                  <li>📱 Preferência de catálogo dividida: 1 prefere WhatsApp, 1 prefere os dois canais</li>
+                  <li>📱 Preferência de catálogo dividida: 1 prefere WhatsApp, 1 prefere WhatsApp e site</li>
                   <li>🔧 Fator decisivo de compra: atendimento e confiança na loja (não preço)</li>
                   <li>💰 Preço foi o principal peso na decisão de contratar montagem</li>
                 </ul>
@@ -978,7 +978,7 @@
               <p class="card-desc">50% dos clientes tiveram dificuldade no cálculo de frete. A partir desse dado, construímos dois fallbacks para não perder a venda por causa de um erro de CEP.</p>
 
               <figure>
-                <h5 class="fig-heading">Fallback 1 e 2: botão "Não sei o meu CEP" permite ao cliente escolher o bairro e receber o orçamento direto no site, sem depender do número do CEP</h5>
+                <h5 class="fig-heading">Fallback 1: botão "Não sei o meu CEP" permite ao cliente escolher o bairro e receber o orçamento direto no site, sem depender do número do CEP</h5>
                 <img src="assets/fallback1.png" alt="Botão Não sei o meu CEP e seleção por bairro">
               </figure>
               <figure>
@@ -986,8 +986,8 @@
               </figure>
 
               <figure>
-                <h5 class="fig-heading">Fallback 3: se o CEP do cliente não estiver na nossa base de entrega, ele envia o CEP pelo WhatsApp e o vendedor passa o orçamento manualmente, reduzindo o risco de perder a venda por falha no sistema</h5>
-                <img src="assets/fallback3.png" alt="Arquitetura de fallback para CEP não atendido via WhatsApp">
+                <h5 class="fig-heading">Fallback 2: se o CEP não estiver na nossa base de entrega, o cliente clica no botão de Fallback e é direcionado ao WhatsApp, onde envia o CEP para o vendedor passar o orçamento manualmente, reduzindo o risco de perder a venda</h5>
+                <img src="assets/fallback3.png" alt="Botão de fallback direciona cliente ao WhatsApp para envio de CEP">
               </figure>
 
               <div class="info-box accent" style="margin-top:1rem">
