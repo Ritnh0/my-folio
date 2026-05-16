@@ -92,10 +92,22 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
       font-family: var(--font-heading);
       font-size: .78rem; font-weight: 700;
       color: var(--orange);
       letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--orange);
+      flex-shrink: 0;
     }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
@@ -623,7 +635,10 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Paulo Pereira</span>
+  <a href="#hero" class="nav-logo">
+    <img src="assets/baricon.png" alt="Paulo Pereira" class="nav-icon">
+    Paulo Pereira
+  </a>
   <div class="nav-links">
     <a href="#urso">Cases</a>
     <a href="#contato">Contato</a>
