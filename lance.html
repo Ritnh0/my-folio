@@ -612,6 +612,46 @@
     .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 
     /* ================================================
+       LIGHTBOX
+    ================================================ */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,.93);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 1.5rem;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-lg);
+      cursor: default;
+      animation: lbIn .2s ease;
+    }
+    #lb-close {
+      position: absolute;
+      top: 1rem; right: 1.25rem;
+      background: none; border: none;
+      color: #fff; font-size: 2.2rem;
+      cursor: pointer; line-height: 1;
+      opacity: .6; transition: opacity .15s;
+    }
+    #lb-close:hover { opacity: 1; }
+    @keyframes lbIn {
+      from { transform: scale(.93); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    /* cursor zoom nas imagens clicáveis */
+    figure img, .img-wide img { cursor: zoom-in; }
+
+    /* ================================================
        FOOTER
     ================================================ */
     footer {
@@ -1099,11 +1139,15 @@
 
             <div>
               <p class="card-num">Agente 01</p>
-              <h4 class="card-title">Geração de imagens que geram desejo</h4>
-              <p class="card-desc">Agente criado no ChatGPT para gerar imagens de produto em contexto de ambiente. Em vez de foto técnica isolada, o móvel aparece num quarto ou sala decorada, despertando desejo e facilitando a decisão de compra.</p>
+              <h4 class="card-title">Urso Fotógrafo</h4>
+              <p class="card-desc">É só jogar a foto do produto: o agente projeta o móvel num ambiente decorado, gerando desejo sem precisar de fotógrafo ou set.</p>
+              <figure>
+                <h5 class="fig-heading">Antes e depois: produto isolado vs. móvel projetado no ambiente pelo agente</h5>
+                <img src="assets/UrsoFot%C3%B3grafo.png" alt="Urso Fotógrafo — IA projetando móvel em ambiente">
+              </figure>
               <div class="info-box accent">
                 <p class="box-label">por que isso importa</p>
-                <p>Anúncios de ambientes convertem mais que produtos isolados. A IA permite escalar essa produção sem depender de fotógrafo ou set de decoração.</p>
+                <p>Anúncios de ambientes convertem mais que produtos isolados. A IA escala essa produção sem depender de fotógrafo ou set de decoração.</p>
               </div>
               <div class="tags">
                 <span class="tag">ChatGPT</span>
@@ -1114,11 +1158,24 @@
 
             <div>
               <p class="card-num">Agente 02</p>
-              <h4 class="card-title">Textos de SEO para descrição de produtos</h4>
-              <p class="card-desc">Agente treinado para escrever descrições de produto otimizadas para buscadores. Capta intenção de busca do cliente, usa palavras-chave estratégicas e mantém o tom da marca para cada item do catálogo.</p>
+              <h4 class="card-title">Copy Urso Web</h4>
+              <p class="card-desc">O agente lê a descrição técnica do produto e transforma em copy pronto para o site, negritando automaticamente os detalhes que mais influenciam a decisão de compra:</p>
+              <ul class="sol-list">
+                <li>📐 Medidas exatas do produto</li>
+                <li>🪵 Material e acabamento</li>
+                <li>🔩 Tipo de corrediça e mecanismo</li>
+              </ul>
+              <figure>
+                <h5 class="fig-heading">Descrição técnica transformada em copy com destaques em negrito</h5>
+                <img src="assets/CopyUrsoweb1.png" alt="Copy Urso Web — descrição técnica virou copy">
+              </figure>
+              <figure>
+                <h5 class="fig-heading">Resultado final publicado na página do produto</h5>
+                <img src="assets/CopyUrsoweb2.png" alt="Copy Urso Web — resultado na página do produto">
+              </figure>
               <div class="info-box accent">
                 <p class="box-label">por que isso importa</p>
-                <p>Descrições bem escritas aumentam o ranqueamento orgânico e o CTR. Com o agente, cada produto novo já sai com SEO pronto, sem esforço manual.</p>
+                <p>Descrições bem escritas aumentam ranqueamento orgânico e CTR. Com o agente, cada produto novo já sai com SEO e copy prontos, sem esforço manual.</p>
               </div>
               <div class="tags">
                 <span class="tag">ChatGPT</span>
@@ -1197,7 +1254,41 @@
   <p>Paulo Pereira · UX Designer · Rio de Janeiro · 2025</p>
 </footer>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" aria-label="Fechar">×</button>
+  <img src="" alt="">
+</div>
+
 <script>
+  // Lightbox
+  const lb    = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img');
+
+  function openLb(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  document.querySelectorAll('figure img, .img-wide img').forEach(img => {
+    img.addEventListener('click', () => openLb(img.src, img.alt));
+  });
+
+  lb.addEventListener('click', e => {
+    if (e.target === lb || e.target.id === 'lb-close') closeLb();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLb();
+  });
+
+  // Accordion
   document.querySelectorAll('.expand-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const id     = btn.getAttribute('data-target');
