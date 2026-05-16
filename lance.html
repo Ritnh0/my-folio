@@ -963,6 +963,10 @@
               </div>
             </div>
 
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-1-detail">ocultar</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1018,6 +1022,11 @@
               <p class="card-desc">Backlog priorizado por score de 1 a 13. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
               <figure><img src="assets/Prioriza%C3%A7%C3%A3o%20de%20problemas.png" alt="Priorização de problemas por score"></figure>
             </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-2-detail">ocultar</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1071,6 +1080,11 @@
                 <img src="assets/jornada%20do%20usuario-personasolteiro.png" alt="Jornada do usuário persona solteira">
               </div>
             </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-3-detail">ocultar</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1153,6 +1167,11 @@
               <p class="card-desc">Menu em lista simplificado para grid visual 3D com ícones por categoria. Menos opções visíveis, mais desejo e clareza de escolha.</p>
               <figure><img src="assets/barramenu.png" alt="Barra de menu antes e depois da melhoria"></figure>
             </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-4-detail">ocultar</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1206,6 +1225,11 @@
                 <p>Com esse ciclo, uma ideia de melhoria vai do pensamento ao ar em minutos. Botão em outro lugar, copy diferente, elemento removido: a gente testa rápido e segue com o que funciona.</p>
               </div>
             </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-5-detail">ocultar</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1275,6 +1299,10 @@
                 <span class="tag">SEO</span>
                 <span class="tag">UX Writing</span>
               </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-6-detail">ocultar</button>
             </div>
 
           </div>
@@ -1381,14 +1409,16 @@
     if (e.key === 'Escape') closeLb();
   });
 
-  // Accordion
+  // Accordion — sincroniza todos os botões do mesmo step
   document.querySelectorAll('.expand-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const id     = btn.getAttribute('data-target');
       const detail = document.getElementById(id);
       const open   = detail.classList.toggle('is-open');
-      btn.textContent = open ? 'ocultar' : 'ver detalhes';
-      btn.classList.toggle('is-open', open);
+      document.querySelectorAll(`.expand-btn[data-target="${id}"]`).forEach(b => {
+        b.textContent = open ? 'ocultar' : 'ver detalhes';
+        b.classList.toggle('is-open', open);
+      });
     });
   });
 </script>
