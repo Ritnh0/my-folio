@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referência — Portfólio Paulo Pereira</title>
+  <style>
+    /*
+    ================================================
+    REFERENCIA.HTML — USO INTERNO / CLAUDE CODE
+    ================================================
+    Este arquivo é a referência estrutural do portfólio.
+    Contém toda a lógica, textos, ordem dos elementos e
+    comportamento interativo do site.
+
+    O Claude Code deve usar este arquivo para gerar o
+    index.html final com:
+    - As imagens reais da pasta assets/urso/ nos placeholders
+    - Design system próprio (cores, tipografia, espaçamentos)
+    - Mobile first, sem framework externo
+    - Performance: imagens em WebP, máx 200kb cada
+    ================================================
+
+    PALETA DE CORES (baseada no design system da Urso):
+    - Laranja primário: #f2790e
+    - Marrom: #5c3a22
+    - Bege: #E5D8C6
+    - Cinza escuro: #0C111D
+    - Branco: #FFFFFF
+
+    TIPOGRAFIA:
+    - Títulos: Poppins (Bold)
+    - Corpo: Noto Sans Georgian
+    - Importar via Google Fonts
+
+    ESTRUTURA DE PASTAS DE IMAGENS:
+    assets/urso/bigpicture-mockup.png
+    assets/urso/print-vendas-a-noite.jpeg
+    assets/urso/seo-uxwriting.jpeg
+    assets/urso/benchmark.png
+    assets/urso/multiplo-alinhamento.png
+    assets/urso/google-analytics4.jpeg
+    assets/urso/hotjar-attention.png
+    assets/urso/hotjar-attention2.png
+    assets/urso/melhoria-craft.png
+    assets/urso/bmc.png
+    assets/urso/vpc.png
+    assets/urso/funil.png
+    assets/urso/matriz-impacto-esforco.png
+    assets/urso/priorizacao-de-problemas.png
+    assets/urso/personas.png
+    assets/urso/jornada-de-experiencia.png
+    assets/urso/jornada-personacasal.png
+    assets/urso/jornada-personasolteira.png
+    assets/urso/sitemap.png
+    assets/urso/colours-in-culture.png
+    assets/urso/inspiracoes.png
+    assets/urso/rabiscoframe.png
+    assets/urso/barramenu.png
+    assets/urso/cores.png
+    assets/urso/tipografia.png
+    assets/urso/shopify-panel.png
+    assets/urso/searchdiscovery.png
+    */
+  </style>
+</head>
+<body>
+
+<!--
+================================================
+SEÇÃO: HERO / APRESENTAÇÃO PESSOAL
+================================================
+-->
+<section id="hero">
+  <h1>Opa, eu sou o Paulo!</h1>
+  <h2>UX Designer Junior</h2>
+  <p>Crio experiências digitais que vendem.</p>
+  <p>De campanhas de tráfego, estratégias de negócio até e-commerces completos.</p>
+  <p>Vivo no Rio de Janeiro. Conheça meu portfólio.</p>
+
+  <!-- Links de contato -->
+  <a href="https://www.linkedin.com/in/paulo-victor-pereira/">LinkedIn</a>
+  <a href="mailto:paulovictorcarregal@gmail.com">E-mail</a>
+  <a href="https://wa.me/5521974395509">WhatsApp</a>
+</section>
+
+
+<!--
+================================================
+CASE 1 — URSO MÓVEIS
+================================================
+-->
+<section id="urso">
+
+  <!-- COMPANY BACKGROUND -->
+  <div id="urso-company-background">
+    <p>Loja de móveis física no RJ. Vendas 100% via vendedor + WhatsApp. Criou seu primeiro e-commerce em 2025.</p>
+  </div>
+
+  <!-- BIG PICTURE
+  IMAGEM: assets/urso/bigpicture-mockup.png
+  Exibir em destaque, largura total, com sombra suave.
+  -->
+  <div id="urso-bigpicture">
+    <img src="assets/urso/bigpicture-mockup.png" alt="Mockup do site Urso Móveis">
+    <a href="https://ursomoveis.com" target="_blank">ver site ao vivo → ursomoveis.com</a>
+  </div>
+
+  <!-- PROBLEM STATEMENT -->
+  <div id="urso-problem-statement">
+    <p class="label">problem statement</p>
+    <p class="quote">"Vendedor trabalhando até de madrugada, leads chegando mas não convertendo, e zero visibilidade sobre o porquê."</p>
+    <ul>
+      <li>🌙 Jornada do vendedor se estendia até à noite respondendo WhatsApp manualmente</li>
+      <li>📉 Muitos leads entrando, baixa conversão — sem saber onde estava a fricção</li>
+      <li>📊 Nenhum método de análise de dados para embasar decisões</li>
+    </ul>
+  </div>
+
+
+  <!-- ============================================
+  STEPPER — PROCESSO (accordion expansível)
+  Comportamento: cada step tem botão "ver detalhes"
+  que expande o conteúdo. Botão vira "ocultar"
+  quando aberto. Funciona independente por step.
+  ============================================ -->
+
+  <div id="stepper">
+
+    <!-- STEP 1 — RESEARCH & STRATEGY -->
+    <div class="step" id="step-1">
+      <div class="step-header">
+        <span class="step-dot done"></span>
+        <div>
+          <h3>Research &amp; Strategy</h3>
+          <p>Diagnóstico dos 3 problemas com evidências reais.</p>
+          <button class="expand-btn" data-target="step-1-detail">ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="step-detail" id="step-1-detail" hidden>
+
+        <!-- PROBLEMA 1 -->
+        <div class="problema">
+          <p class="prob-num">Problema 01</p>
+          <h4>Jornada longa do vendedor</h4>
+          <p>Atendimento manual no WhatsApp até a madrugada, sem escala e sem autonomia para o cliente finalizar a compra.</p>
+
+          <!--
+          IMAGEM: assets/urso/print-vendas-a-noite.jpeg
+          Legenda: "Notificações Shopify — pedidos chegando fora do horário comercial"
+          Nota: Pedido #1378 às 22:47 · #1373 às 19:32 · #1369 às 19:42
+          -->
+          <figure>
+            <img src="assets/urso/print-vendas-a-noite.jpeg" alt="Notificações Shopify de pedidos chegando à noite">
+            <figcaption>Pedidos chegando após as 19h — sem nenhum atendimento manual</figcaption>
+          </figure>
+
+          <!--
+          IMAGEM: assets/urso/seo-uxwriting.jpeg
+          Legenda: "WhatsApp + SEO da foto + UX Writing direcionando ao site"
+          Nota: Copy às 20:46 — "Confira o catálogo e finalize sua compra enquanto estamos offline"
+          -->
+          <figure>
+            <img src="assets/urso/seo-uxwriting.jpeg" alt="WhatsApp com copy direcionando ao site e foto otimizada">
+            <figcaption>UX Writing guiando o cliente ao site fora do horário de atendimento</figcaption>
+          </figure>
+
+          <ul class="solucoes">
+            <li>✓ E-commerce criado para receber clientes à noite — compra self-service, sem atendimento manual</li>
+            <li>✓ UX Writing guiando o cliente no WhatsApp e dentro do site</li>
+            <li>✓ SEO nas fotos melhorando preview no catálogo e aumentando CTR</li>
+          </ul>
+          <div class="tags">
+            <span>UX Writing</span><span>SEO</span><span>e-commerce</span>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 2 -->
+        <div class="problema">
+          <p class="prob-num">Problema 02</p>
+          <h4>Muitos leads, baixa conversão</h4>
+          <p>Desk research + benchmark revelaram que clientes buscam ambientes completos e que montagem é diferencial decisivo.</p>
+
+          <!--
+          IMAGEM: assets/urso/benchmark.png
+          Legenda: "Benchmark — antes e depois de aplicar UX"
+          Nota disclaimer: "Com a adoção do serviço de montagem, ficamos parelhos aos concorrentes que já ofereciam esse diferencial."
+          -->
+          <figure>
+            <img src="assets/urso/benchmark.png" alt="Benchmark antes e depois de aplicar UX">
+            <figcaption>Com a adoção do serviço de montagem, ficamos parelhos aos concorrentes que já ofereciam esse diferencial.</figcaption>
+          </figure>
+
+          <!-- Insights da desk research -->
+          <div class="insights">
+            <p class="label">Insights da desk research</p>
+            <ul>
+              <li>📦 Anúncios de ambientes convertem mais que produtos isolados</li>
+              <li>🛋️ Catálogo reorganizado por ambiente: Sala, Quarto, Cozinha</li>
+              <li>🔧 Montagem integrada como diferencial competitivo nacional</li>
+            </ul>
+            <a href="https://docs.google.com/document/d/1G1tBBZl36MiaJxPdhAE-LrDxyX0GOTMFBySgvstVGcU/edit" target="_blank">ver desk research completa</a>
+          </div>
+
+          <!--
+          IMAGEM: assets/urso/multiplo-alinhamento.png
+          Legenda: "Múltiplo Alinhamento — framework do serviço de montagem"
+          Nota: Jornada do vendedor + comprador, inspirado no eBay
+          A imagem é grande e pode ficar embaçada — exibir com max-width 100% e link para ver melhor
+          -->
+          <figure>
+            <img src="assets/urso/multiplo-alinhamento.png" alt="Framework Múltiplo Alinhamento do serviço de montagem">
+            <figcaption>Framework completo disponível para download ou visualização no Figma.</figcaption>
+          </figure>
+
+          <!-- Botões framework -->
+          <div class="botoes-framework">
+            <a href="https://drive.google.com/file/d/1RaCIFCcegSqTw-ey16a9FX7375a014YA/view?usp=sharing" target="_blank">⬇ baixar framework</a>
+            <!--
+            BOTÃO FIGMA — estilizar com fundo #7B61FF, texto branco, logo SVG do Figma
+            -->
+            <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20112-956" target="_blank" class="figma-btn">ver no Figma</a>
+          </div>
+
+          <!-- Insight principal -->
+          <div class="insight-box">
+            <p class="label">principal insight</p>
+            <p>Oferecer montagem já na negociação — produto + entrega + montagem num orçamento único, reduzindo o gap e simplificando a decisão do cliente.</p>
+          </div>
+
+          <div class="tags">
+            <span>desk research</span><span>benchmark</span><span>múltiplo alinhamento</span>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 3 -->
+        <div class="problema">
+          <p class="prob-num">Problema 03</p>
+          <h4>Sem dados, sem método</h4>
+          <p>Nenhum acompanhamento de comportamento para embasar decisões de design e priorização de melhorias.</p>
+
+          <!--
+          IMAGEM: assets/urso/google-analytics4.jpeg
+          Legenda: "GA4 — Páginas e telas mais acessadas (53k visualizações)"
+          Nota: Top pages: Home, Guarda-Roupas (4.7k), Cozinhas (4.3k)
+          -->
+          <figure>
+            <img src="assets/urso/google-analytics4.jpeg" alt="Painel Google Analytics 4 com páginas mais acessadas">
+            <figcaption>Top pages: Home, Guarda-Roupas e Cozinhas — priorizadas para monitoramento no Hotjar</figcaption>
+          </figure>
+
+          <!--
+          IMAGEM: assets/urso/hotjar-attention.png
+          Legenda: "Hotjar Scrollmap — antes da melhoria"
+          Nota: Apenas 60,1% dos usuários scrollavam até os produtos na página de Guarda-Roupas
+          -->
+          <figure>
+            <img src="assets/urso/hotjar-attention.png" alt="Hotjar scrollmap mostrando 60% de scroll na página de guarda-roupas">
+            <figcaption>Apenas 60,1% dos usuários chegavam até os produtos — o texto SEO no topo empurrava o catálogo para baixo do fold.</figcaption>
+          </figure>
+
+          <!-- Diagnóstico -->
+          <div class="diagnostico-box">
+            <p class="label">diagnóstico</p>
+            <p>O texto SEO extenso no topo da página empurrava os produtos para baixo do fold, escondendo o catálogo logo na primeira visão do usuário.</p>
+          </div>
+
+          <!--
+          IMAGEM: assets/urso/melhoria-craft.png
+          Legenda: "Melhorias de craft — v1 → v2 → v3"
+          Nota: Seletor de filtros visual, filtro de preço e produtos logo de cara
+          Imagem larga — exibir scroll horizontal em mobile ou zoom ao clicar
+          -->
+          <figure>
+            <img src="assets/urso/melhoria-craft.png" alt="Evolução do craft da interface v1 v2 v3">
+            <figcaption>v1 → v2 → v3: filtros visuais, filtro de preço e produtos visíveis na primeira dobra</figcaption>
+          </figure>
+
+          <ul class="solucoes">
+            <li>✓ Seletor visual de tipo de modelo (casal, solteiro, espelhado, infantil)</li>
+            <li>✓ Filtro de preço adicionado</li>
+            <li>✓ Imagens dos móveis visíveis já na primeira dobra</li>
+          </ul>
+
+          <!--
+          IMAGEM: assets/urso/hotjar-attention2.png
+          Legenda: "Hotjar Scrollmap — após a melhoria"
+          Nota: 100% scrolled this far — produtos visíveis logo no início
+          -->
+          <figure>
+            <img src="assets/urso/hotjar-attention2.png" alt="Hotjar scrollmap após melhoria mostrando 100% de scroll">
+            <figcaption>Após a melhoria: 100% dos usuários chegam até os produtos.</figcaption>
+          </figure>
+
+          <!-- Decisão técnica -->
+          <div class="decisao-box">
+            <p class="label">decisão técnica</p>
+            <p>O texto SEO foi ocultado visualmente na interface mas permanece ativo no HTML — mantendo o ranqueamento nos buscadores sem prejudicar a experiência do usuário.</p>
+          </div>
+
+          <div class="tags">
+            <span>GA4</span><span>Hotjar</span><span>CRO</span><span>UI craft</span><span>SEO</span>
+          </div>
+        </div>
+
+      </div><!-- /step-1-detail -->
+    </div><!-- /step-1 -->
+
+
+    <!-- STEP 2 — ESTRATÉGIA & ARQUITETURA -->
+    <div class="step" id="step-2">
+      <div class="step-header">
+        <span class="step-dot done"></span>
+        <div>
+          <h3>Estratégia &amp; Arquitetura</h3>
+          <p>5 artefatos estruturando o modelo de negócio e a lógica de conversão.</p>
+          <button class="expand-btn" data-target="step-2-detail">ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="step-detail" id="step-2-detail" hidden>
+
+        <!-- BMC -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 01</p>
+          <h4>Business Model Canvas</h4>
+          <p>Modelo de negócio completo: parceiros, atividades chave, proposta de valor, canais, segmentos e estrutura de custo.</p>
+          <!-- IMAGEM: assets/urso/bmc.png -->
+          <img src="assets/urso/bmc.png" alt="Business Model Canvas da Urso Móveis">
+        </div>
+
+        <!-- VPC -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 02</p>
+          <h4>Value Proposition Canvas</h4>
+          <p>Mapeamento das dores e ganhos do cliente carioca cruzado com a proposta de valor da Urso.</p>
+          <!-- IMAGEM: assets/urso/vpc.png -->
+          <img src="assets/urso/vpc.png" alt="Value Proposition Canvas da Urso Móveis">
+        </div>
+
+        <!-- FUNIL -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 03</p>
+          <h4>Funil de Vendas — Site + WhatsApp</h4>
+          <p>Dois funis integrados com remarketing cruzado, dobrando a chance de conversão em cada canal.</p>
+          <!-- IMAGEM: assets/urso/funil.png -->
+          <img src="assets/urso/funil.png" alt="Funil de vendas Site e WhatsApp">
+        </div>
+
+        <!-- MATRIZ -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 04</p>
+          <h4>Matriz Impacto × Esforço</h4>
+          <p>Priorização do cadastro de produtos no catálogo — Quick Wins primeiro, Major Projects depois.</p>
+          <!-- IMAGEM: assets/urso/matriz-impacto-esforco.png -->
+          <img src="assets/urso/matriz-impacto-esforco.png" alt="Matriz impacto esforço">
+        </div>
+
+        <!-- PRIORIZAÇÃO -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 05</p>
+          <h4>Priorização de Problemas</h4>
+          <p>Backlog priorizado por score de 1 a 13. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+          <!-- IMAGEM: assets/urso/priorizacao-de-problemas.png -->
+          <img src="assets/urso/priorizacao-de-problemas.png" alt="Priorização de problemas por score">
+        </div>
+
+      </div><!-- /step-2-detail -->
+    </div><!-- /step-2 -->
+
+
+    <!-- STEP 3 — JORNADAS & PERSONAS -->
+    <div class="step" id="step-3">
+      <div class="step-header">
+        <span class="step-dot done"></span>
+        <div>
+          <h3>Jornadas &amp; Personas</h3>
+          <p>2 personas reais + jornada de experiência + jornadas individuais.</p>
+          <button class="expand-btn" data-target="step-3-detail">ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="step-detail" id="step-3-detail" hidden>
+
+        <!-- PERSONAS -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 01</p>
+          <h4>Personas</h4>
+          <p>João &amp; Leticia (casal mudando de casa) e Pietra (renovando ambiente). Baseadas em comportamento real dos clientes.</p>
+          <!-- IMAGEM: assets/urso/personas.png -->
+          <img src="assets/urso/personas.png" alt="Personas João e Leticia e Pietra">
+        </div>
+
+        <!-- JORNADA DE EXPERIÊNCIA -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 02</p>
+          <h4>Jornada de Experiência</h4>
+          <p>Mapeamento simplificado com 3 atores: Cliente, Vendedor e Entregador — do estímulo ao pós-montagem.</p>
+          <!-- IMAGEM: assets/urso/jornada-de-experiencia.png -->
+          <img src="assets/urso/jornada-de-experiencia.png" alt="Jornada de experiência com 3 atores">
+        </div>
+
+        <!-- JORNADA CASAL -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 03</p>
+          <h4>Jornada do Usuário — João &amp; Leticia</h4>
+          <p>5 fases com sentimentos, falas e oportunidades. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+          <!-- IMAGEM: assets/urso/jornada-personacasal.png -->
+          <img src="assets/urso/jornada-personacasal.png" alt="Jornada do usuário persona casal">
+        </div>
+
+        <!-- JORNADA SOLTEIRA -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 04</p>
+          <h4>Jornada do Usuário — Pietra</h4>
+          <p>Foco em renovação de ambiente e produtos de médio-baixo ticket. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+          <!-- IMAGEM: assets/urso/jornada-personasolteira.png -->
+          <img src="assets/urso/jornada-personasolteira.png" alt="Jornada do usuário persona solteira">
+        </div>
+
+      </div><!-- /step-3-detail -->
+    </div><!-- /step-3 -->
+
+
+    <!-- STEP 4 — WIREFRAMES & UI -->
+    <div class="step" id="step-4">
+      <div class="step-header">
+        <span class="step-dot done"></span>
+        <div>
+          <h3>Wireframes &amp; UI</h3>
+          <p>Do sitemap ao design system — decisões visuais documentadas.</p>
+          <button class="expand-btn" data-target="step-4-detail">ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="step-detail" id="step-4-detail" hidden>
+
+        <!-- SITEMAP -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 01</p>
+          <h4>Sitemap</h4>
+          <p>Estrutura completa das páginas — Landing Page, Categorias e Página do Móvel com todos os componentes mapeados.</p>
+          <!-- IMAGEM: assets/urso/sitemap.png — arquivo grande, exibir com zoom ao clicar -->
+          <img src="assets/urso/sitemap.png" alt="Sitemap do site Urso Móveis">
+          <!--
+          BOTÃO DRIVE — estilizar com ícone do Google Drive
+          -->
+          <a href="https://drive.google.com/file/d/1v9qJq-Uqydi-9mFQi2Ga3SI5JIzMwpl2/view?usp=sharing" target="_blank">ver completo no Drive</a>
+        </div>
+
+        <!-- GUIA DE CORES -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 02</p>
+          <h4>Guia de Cores</h4>
+          <p>Sistema de cores com tokens: laranja primário #f2790e, marrom, bege e escala de cinzas — todos com ratios de contraste WCAG.</p>
+          <!-- IMAGEM: assets/urso/cores.png -->
+          <img src="assets/urso/cores.png" alt="Guia de cores do design system Urso">
+        </div>
+
+        <!-- TIPOGRAFIA -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 03</p>
+          <h4>Tipografia</h4>
+          <p>Poppins para títulos e displays. Noto Sans Georgian para corpo de texto. Escala tipográfica de 80px até 18px.</p>
+          <!-- IMAGEM: assets/urso/tipografia.png -->
+          <img src="assets/urso/tipografia.png" alt="Guia de tipografia do design system Urso">
+        </div>
+
+        <!-- COLOURS IN CULTURE -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 04</p>
+          <h4>Energia da Cor Laranja</h4>
+          <p>Decisão de cor embasada em pesquisa cultural — laranja representa equilíbrio, coragem, energia, aprendizado e desejo.</p>
+          <!-- IMAGEM: assets/urso/colours-in-culture.png -->
+          <img src="assets/urso/colours-in-culture.png" alt="Colours in Culture mostrando significado do laranja">
+        </div>
+
+        <!-- INSPIRAÇÕES -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 05</p>
+          <h4>Sites de Inspiração</h4>
+          <p>Benchmark visual de e-commerces de móveis — padrões de layout, hierarquia de produto, filtros e prova social.</p>
+          <!-- IMAGEM: assets/urso/inspiracoes.png — arquivo grande -->
+          <img src="assets/urso/inspiracoes.png" alt="Sites de inspiração para o design do e-commerce">
+          <!--
+          BOTÃO FIGMA — fundo #7B61FF, logo SVG do Figma, texto branco
+          -->
+          <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3582" target="_blank" class="figma-btn">ver no Figma</a>
+        </div>
+
+        <!-- RABISCO FRAME -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 06</p>
+          <h4>Rabisco Frame</h4>
+          <p>Primeiro rascunho das telas — exploração de layout antes de partir para o protótipo de alta fidelidade.</p>
+          <!-- IMAGEM: assets/urso/rabiscoframe.png -->
+          <img src="assets/urso/rabiscoframe.png" alt="Rabisco frame das telas do e-commerce">
+          <!--
+          BOTÃO FIGMA — fundo #7B61FF, logo SVG do Figma, texto branco
+          -->
+          <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3521" target="_blank" class="figma-btn">ver no Figma</a>
+        </div>
+
+        <!-- BARRA DE MENU -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 07</p>
+          <h4>Barra de Menu — Antes e Depois</h4>
+          <p>Menu em lista simplificado para grid visual 3D com ícones por categoria — menos opções visíveis, mais desejo e clareza de escolha.</p>
+          <!-- IMAGEM: assets/urso/barramenu.png -->
+          <img src="assets/urso/barramenu.png" alt="Barra de menu antes e depois da melhoria">
+        </div>
+
+      </div><!-- /step-4-detail -->
+    </div><!-- /step-4 -->
+
+
+    <!-- STEP 5 — IMPLEMENTAÇÃO & CRO -->
+    <div class="step" id="step-5">
+      <div class="step-header">
+        <span class="step-dot active"></span>
+        <div>
+          <h3>Implementação &amp; CRO</h3>
+          <p>Shopify + Claude Code + ciclo contínuo de melhorias.</p>
+          <button class="expand-btn" data-target="step-5-detail">ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="step-detail" id="step-5-detail" hidden>
+
+        <!-- SHOPIFY PANEL -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 01</p>
+          <h4>Painel Shopify — controle operacional</h4>
+          <p>O Shopify centraliza hospedagem, pedidos, produtos, clientes, marketing, descontos, análises e Pixel para remarketing — num ambiente admin seguro e controlado.</p>
+          <!-- IMAGEM: assets/urso/shopify-panel.png -->
+          <img src="assets/urso/shopify-panel.png" alt="Painel admin do Shopify da Urso Móveis">
+          <p>Canais ativos: Loja virtual · Agêntico · Facebook &amp; Instagram · Judge.me Reviews</p>
+        </div>
+
+        <!-- SEARCH & DISCOVERY -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 02</p>
+          <h4>Search &amp; Discovery — dados de pesquisa interna</h4>
+          <p>Monitoramento do que os clientes buscam no site — revela oportunidades de catálogo e gaps de produto em tempo real.</p>
+          <!-- IMAGEM: assets/urso/searchdiscovery.png -->
+          <img src="assets/urso/searchdiscovery.png" alt="Painel Search and Discovery do Shopify">
+          <p>Taxa de cliques 78,91% ↑8% · Taxa de compra 1,87% ↑66% · Gaps: guardaroupa, armário solteiro, móveis infantis</p>
+        </div>
+
+        <!-- FLUXO CLAUDE CODE -->
+        <div class="artefato">
+          <p class="artefato-num">Artefato 03</p>
+          <h4>Como funciona o Claude Code + Shopify CLI</h4>
+          <p>Fluxo de implementação contínua sem depender de agência:</p>
+          <ol>
+            <li>Tema da loja baixado localmente — arquivos .liquid, CSS e JSON do site real</li>
+            <li>Mudança descrita em português — Claude lê os arquivos, entende a estrutura e executa a alteração</li>
+            <li>Shopify CLI sobe só o arquivo modificado — site atualiza em segundos</li>
+            <li>Hipótese validada ou descartada — próxima iteração começa</li>
+          </ol>
+          <div class="insight-box">
+            <p class="label">por que isso importa pro CRO</p>
+            <p>Com esse ciclo, uma ideia de melhoria vai do pensamento ao ar em minutos. Botão em outro lugar, copy diferente, elemento removido — a gente testa rápido e segue com o que funciona.</p>
+          </div>
+        </div>
+
+      </div><!-- /step-5-detail -->
+    </div><!-- /step-5 -->
+
+  </div><!-- /stepper -->
+
+
+  <!-- MÉTRICAS FINAIS -->
+  <div id="urso-resultados">
+    <div class="metrica"><span class="val">3.8k</span><span class="label">usuários/mês</span></div>
+    <div class="metrica"><span class="val">377</span><span class="label">vendas</span></div>
+    <div class="metrica"><span class="val">0,45%</span><span class="label">CRO antes</span></div>
+    <div class="metrica highlight"><span class="val">1,23%</span><span class="label">CRO depois</span></div>
+  </div>
+
+</section><!-- /urso -->
+
+
+<!--
+================================================
+CASE 2 — PARIS MULTIMARCAS
+(a ser construído na próxima etapa)
+================================================
+-->
+<section id="paris">
+  <!-- Em breve -->
+</section>
+
+
+<!--
+================================================
+CTA FINAL
+================================================
+-->
+<section id="contato">
+  <h2>Bora construir juntos?</h2>
+  <a href="https://www.linkedin.com/in/paulo-victor-pereira/">LinkedIn</a>
+  <a href="mailto:paulovictorcarregal@gmail.com">E-mail</a>
+  <a href="https://wa.me/5521974395509">WhatsApp</a>
+</section>
+
+
+<!--
+================================================
+JAVASCRIPT — LÓGICA DO ACCORDION
+Cada botão .expand-btn controla seu step independente.
+Texto alterna entre "ver detalhes" e "ocultar".
+================================================
+-->
+<script>
+  document.querySelectorAll('.expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const detail = document.getElementById(targetId);
+      const isOpen = !detail.hidden;
+
+      detail.hidden = isOpen;
+      btn.textContent = isOpen ? 'ver detalhes' : 'ocultar';
+    });
+  });
+</script>
+
+</body>
+</html>
