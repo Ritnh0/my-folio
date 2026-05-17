@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paulo Pereira — Case Paris Multimarcas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red:        #F50402;
+      --red-dim:    rgba(245,4,2,.12);
+      --red-border: rgba(245,4,2,.3);
+      --dark:       #0C111D;
+      --dark-2:     #131928;
+      --dark-3:     #1c2335;
+      --dark-4:     #242d3f;
+      --white:      #FCFCFC;
+      --text-primary:  #eee8df;
+      --text-secondary:#a8b0c8;
+      --text-muted:    #636d87;
+      --border:        rgba(255,255,255,.08);
+      --border-red:    rgba(245,4,2,.3);
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --r-sm:6px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-full:9999px;
+      --shadow-lg: 0 16px 48px rgba(0,0,0,.65);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--dark);color:var(--text-primary);font-size:1rem;line-height:1.75;-webkit-font-smoothing:antialiased;}
+    img{max-width:100%;height:auto;display:block;border-radius:var(--r-md);}
+    a{color:inherit;text-decoration:none;}
+    h1,h2,h3,h4{font-family:var(--font-heading);font-weight:800;line-height:1.2;}
+    ul,ol{list-style:none;padding:0;}
+    .container{width:100%;max-width:760px;margin:0 auto;padding:0 1.25rem;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:rgba(12,17,29,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:var(--font-heading);font-size:.78rem;font-weight:800;color:var(--red);letter-spacing:.08em;text-transform:uppercase;}
+    .nav-links{display:flex;gap:1.5rem;}
+    .nav-links a{font-size:.8rem;color:var(--text-muted);transition:color .2s;}
+    .nav-links a:hover{color:var(--red);}
+
+    .hero{padding:120px 0 60px;border-bottom:1px solid var(--border);}
+    .case-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--red);font-weight:700;margin-bottom:.75rem;}
+    .case-title{font-size:clamp(2.5rem,8vw,5rem);color:var(--white);margin-bottom:.5rem;letter-spacing:-.02em;}
+    .case-sub{font-size:1rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.6;}
+    .role-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;}
+    .role-tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);background:var(--red-dim);border:1px solid var(--red-border);padding:.25rem .85rem;border-radius:var(--r-full);}
+
+    .metrics-hero{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:2rem 0 1.25rem;}
+    @media(min-width:600px){.metrics-hero{grid-template-columns:repeat(3,1fr);}}
+    .metric-card{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem;text-align:center;}
+    .metric-card.hl{background:var(--red-dim);border-color:var(--border-red);}
+    .metric-val{font-family:var(--font-heading);font-size:clamp(1.4rem,4vw,1.9rem);font-weight:900;color:var(--white);display:block;margin-bottom:.2rem;}
+    .metric-card.hl .metric-val{color:var(--red);}
+    .metric-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);line-height:1.4;}
+
+    .funil-box{background:var(--dark-3);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;margin-bottom:1rem;}
+    .funil-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700;margin-bottom:1rem;}
+    .funil-steps{display:flex;flex-direction:column;gap:.5rem;}
+    .funil-step{display:flex;align-items:center;gap:.75rem;}
+    .funil-bar{flex:1;border-radius:4px;padding:.6rem 1rem;font-size:.85rem;font-weight:600;color:var(--text-primary);}
+    .funil-bar.s1{background:rgba(245,4,2,.22);}
+    .funil-bar.s2{background:rgba(245,4,2,.16);margin-left:.75rem;color:var(--text-secondary);}
+    .funil-bar.s3{background:rgba(245,4,2,.10);margin-left:1.5rem;color:var(--text-secondary);}
+    .funil-bar.s4{background:rgba(245,4,2,.05);margin-left:2.25rem;color:var(--text-secondary);}
+    .funil-pct{font-size:.7rem;color:var(--text-muted);margin-left:.4rem;white-space:nowrap;}
+    .funil-num{font-family:var(--font-heading);font-weight:900;font-size:1rem;color:var(--red);min-width:58px;text-align:right;flex-shrink:0;}
+
+    .period-note{font-size:.78rem;color:var(--text-muted);margin-bottom:2rem;padding:0 .25rem;}
+
+    section{padding:4rem 0;border-bottom:1px solid var(--border);}
+    section:last-child{border-bottom:none;}
+    .section-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--red);font-weight:700;margin-bottom:.75rem;}
+    .section-title{font-size:clamp(1.5rem,4vw,2.2rem);color:var(--white);margin-bottom:.75rem;}
+    .section-desc{font-size:.92rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.8;max-width:640px;}
+
+    .info-box{background:var(--dark-3);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;margin:1rem 0;}
+    .info-box.accent{border-left:3px solid var(--red);}
+    .box-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700;margin-bottom:.65rem;}
+    .info-box p{font-size:.85rem;color:var(--text-secondary);line-height:1.8;}
+
+    figure{margin:1.5rem 0;}
+    figure img{width:100%;border:1px solid var(--border);}
+    .fig-heading{font-family:var(--font-heading);font-size:.95rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:.65rem;}
+
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;}
+    .tag{font-size:.75rem;padding:.35rem 1rem;background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r-full);color:var(--red);font-weight:700;letter-spacing:.04em;}
+
+    .updates-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0;}
+    @media(min-width:600px){.updates-grid{grid-template-columns:repeat(2,1fr);}}
+    .update-card{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem;}
+    .update-version{font-family:var(--font-heading);font-size:1.1rem;font-weight:900;color:var(--red);margin-bottom:.5rem;}
+    .update-desc{font-size:.83rem;color:var(--text-secondary);line-height:1.7;}
+
+    .style-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.5rem 0;}
+
+    .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2rem;}
+    @media(min-width:600px){.results-grid{grid-template-columns:repeat(4,1fr);}}
+
+    .step-role{display:flex;gap:.75rem;background:rgba(245,4,2,.07);border:1px solid var(--border-red);border-radius:var(--r-md);padding:1rem 1.25rem;margin-bottom:2rem;}
+    .step-role-icon{font-size:1.1rem;flex-shrink:0;margin-top:.15rem;}
+    .step-role p{font-size:.88rem;color:var(--white);line-height:1.75;margin:0;}
+    .step-role strong{color:var(--red);font-weight:600;}
+
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.35rem;border-radius:var(--r-full);font-size:.82rem;font-weight:600;font-family:var(--font-body);transition:all .2s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--red);color:var(--white);}
+    .btn-primary:hover{opacity:.85;transform:translateY(-2px);}
+    .btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border);}
+    .btn-ghost:hover{border-color:var(--border-red);color:var(--red);}
+
+    .cta-section{text-align:center;padding:4rem 0;background:var(--dark-2);}
+    .cta-title{font-size:clamp(1.8rem,5vw,3rem);color:var(--white);margin-bottom:.75rem;}
+    .cta-sub{font-size:.95rem;color:var(--text-muted);margin-bottom:2rem;}
+    .cta-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;}
+
+    footer{background:var(--dark);border-top:1px solid var(--border);padding:1.5rem 1.25rem;text-align:center;font-size:.72rem;color:var(--text-muted);}
+
+    #lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center;cursor:zoom-out;padding:1.5rem;}
+    #lightbox.open{display:flex;}
+    #lightbox img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:var(--r-md);box-shadow:var(--shadow-lg);cursor:default;animation:lbIn .2s ease;}
+    #lb-close{position:absolute;top:1rem;right:1.25rem;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;opacity:.6;}
+    #lb-close:hover{opacity:1;}
+    @keyframes lbIn{from{transform:scale(.93);opacity:0;}to{transform:scale(1);opacity:1;}}
+    figure img{cursor:zoom-in;}
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Paulo Pereira</span>
+  <div class="nav-links">
+    <a href="lance">← Voltar</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="case-label">Case 02</p>
+    <h1 class="case-title">Paris Multimarcas</h1>
+    <p class="case-sub">Loja de roupas esportivas no RJ. Camisas de time, regatas NBA, futebol e streetwear. Freela de gestão de tráfego pago + criação e evolução contínua do site.</p>
+
+    <div class="role-tags">
+      <span class="role-tag">Freela</span>
+      <span class="role-tag">Gestão de Tráfego</span>
+      <span class="role-tag">UI Design</span>
+      <span class="role-tag">Dev Shopify</span>
+    </div>
+
+    <div class="metrics-hero">
+      <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento no 1º mês</span></div>
+      <div class="metric-card hl"><span class="metric-val">R$2.140</span><span class="metric-lbl">Investimento em anúncios</span></div>
+      <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS do 1º mês</span></div>
+    </div>
+
+    <div class="funil-box">
+      <p class="funil-label">🔽 Funil de vendas — 1º mês</p>
+      <div class="funil-steps">
+        <div class="funil-step">
+          <div class="funil-bar s1">👁️ Visitantes</div>
+          <span class="funil-num">9.480</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s2">🛒 Add to cart <span class="funil-pct">7,4% dos visitantes</span></div>
+          <span class="funil-num">702</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s3">💳 Checkout <span class="funil-pct">79% dos que adicionaram</span></div>
+          <span class="funil-num">554</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s4">✅ Vendas concluídas <span class="funil-pct">7,9% do checkout</span></div>
+          <span class="funil-num">44</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="period-note">📅 Período: 12 de janeiro a 12 de fevereiro de 2026 · Fonte: Shopify Analytics</p>
+
+    <div class="info-box accent">
+      <p class="box-label">🎯 Meu papel neste projeto</p>
+      <p>Freela com escopo duplo: gestão de tráfego pago (Meta Ads) com campanha centrada em regatas NBA e criação e evolução contínua do site no Shopify. Da configuração da loja às melhorias de craft de UI mês a mês.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Contexto</p>
+    <h2 class="section-title">O que é a Paris Multimarcas</h2>
+    <p class="section-desc">Loja física e online de roupas esportivas no Rio de Janeiro. O catálogo mistura futebol, NBA, streetwear e marcas como Jordan, Adidas e Lacoste. A campanha foi centrada em regatas NBA — o produto com maior margem e demanda na época.</p>
+
+    <div class="step-role">
+      <span class="step-role-icon">🎯</span>
+      <p><strong>Estratégia de tráfego:</strong> Anúncios diretos para o site com segmentação por interesse em NBA, basquete e streetwear. Campanha principal focada em regatas de times como Lakers, Bulls e Celtics — produtos de ticket médio com alta conversão por impulso.</p>
+    </div>
+
+    <figure>
+      <h5 class="fig-heading">Nuvem de produtos mais pesquisados: Flamengo, Tênis, Conjunto e times NBA dominam o vocabulário dos clientes</h5>
+      <img src="assets/nuvemparis.jpeg" alt="Nuvem de palavras dos produtos mais buscados na Paris Multimarcas">
+    </figure>
+
+    <div class="tags">
+      <span class="tag">Meta Ads</span>
+      <span class="tag">NBA</span>
+      <span class="tag">Futebol</span>
+      <span class="tag">Shopify</span>
+      <span class="tag">Streetwear</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Design System</p>
+    <h2 class="section-title">Identidade Visual</h2>
+    <p class="section-desc">Paleta construída em cima da identidade Jordan — vermelho primário #F50402, preto e branco. Tipografia Montserrat Bold para títulos e Inter para corpo, reforçando a energia esportiva da marca.</p>
+
+    <div class="style-grid">
+      <figure>
+        <h5 class="fig-heading">Guia de cores</h5>
+        <img src="assets/coresparis.jpeg" alt="Guia de cores Paris Multimarcas">
+      </figure>
+      <figure>
+        <h5 class="fig-heading">Tipografia</h5>
+        <img src="assets/tipografiaparis.jpeg" alt="Guia de tipografia Paris Multimarcas">
+      </figure>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Vermelho #F50402</span>
+      <span class="tag">Montserrat Bold</span>
+      <span class="tag">Inter</span>
+      <span class="tag">Jordan Brand</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Decisão de UX</p>
+    <h2 class="section-title">Calculadora de Frete via API Frenet</h2>
+    <p class="section-desc">Um dos principais motivos de abandono em e-commerces de roupa é não saber o frete antes de chegar no checkout. Implementei uma calculadora de frete na página de produto integrada à API da Frenet, mostrando Sedex e PAC com prazo estimado antes do cliente adicionar ao carrinho.</p>
+
+    <div class="step-role">
+      <span class="step-role-icon">🎯</span>
+      <p><strong>Meu papel:</strong> Desenvolvi a integração com a API da Frenet via Cloudflare Worker como proxy e implementei o componente diretamente no tema Shopify em Liquid e CSS. O cliente digita o CEP e recebe as opções de frete em tempo real, sem precisar chegar no checkout.</p>
+    </div>
+
+    <figure>
+      <h5 class="fig-heading">Calculadora de frete com Sedex e PAC — o cliente vê o valor e o prazo antes de adicionar ao carrinho</h5>
+      <img src="assets/calculadoracep.png" alt="Calculadora de frete Paris Multimarcas integrada via API Frenet">
+    </figure>
+
+    <div class="info-box accent">
+      <p class="box-label">Impacto na jornada</p>
+      <p>554 pessoas chegaram ao checkout no primeiro mês — isso só é possível quando o cliente já sabe o frete antes. A calculadora reduz a fricção de descoberta e aumenta a confiança na decisão de compra.</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag">API Frenet</span>
+      <span class="tag">Cloudflare Worker</span>
+      <span class="tag">Liquid</span>
+      <span class="tag">Redução de fricção</span>
+      <span class="tag">Shopify</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Craft de UI</p>
+    <h2 class="section-title">Melhorias contínuas mês a mês</h2>
+    <p class="section-desc">O site evoluiu progressivamente. Cada atualização foi documentada e comunicada ao cliente com versão numerada — criando transparência e ritmo de melhoria constante.</p>
+
+    <figure style="margin-bottom:2rem">
+      <h5 class="fig-heading">Atualizações de Fevereiro: v1.1 → v1.4</h5>
+      <img src="assets/attfevereiro.jpeg" alt="Atualizações de fevereiro do site Paris Multimarcas v1.1 a v1.4">
+    </figure>
+
+    <div class="updates-grid">
+      <div class="update-card"><div class="update-version">v1.1</div><p class="update-desc">🏀 Seletor de times adicionado na página de coleção NBA — cliente filtra por Lakers, Bulls, Celtics e mais</p></div>
+      <div class="update-card"><div class="update-version">v1.2</div><p class="update-desc">🏬 Botão de catálogo em destaque · Botão "Comprar" em vermelho · Preços em verde claro para contraste</p></div>
+      <div class="update-card"><div class="update-version">v1.3</div><p class="update-desc">🤖 Agente de IA no ChatGPT que analisa a foto da roupa e gera descrições persuasivas automaticamente</p></div>
+      <div class="update-card"><div class="update-version">v1.4</div><p class="update-desc">🏷️ Botão de catálogo atualizado com logo Air Jordan · Valor das parcelas exibido abaixo do preço total</p></div>
+    </div>
+
+    <figure style="margin-top:2rem;margin-bottom:2rem">
+      <h5 class="fig-heading">Atualizações de Março/Abril: v2.1 → v2.3</h5>
+      <img src="assets/attmarço.jpeg" alt="Atualizações de março e abril do site Paris Multimarcas v2.1 a v2.3">
+    </figure>
+
+    <div class="updates-grid">
+      <div class="update-card"><div class="update-version">v2.1</div><p class="update-desc">🏀 Calculadora de frete na página de produto — cliente vê Sedex e PAC com prazo antes de adicionar ao carrinho</p></div>
+      <div class="update-card"><div class="update-version">v2.2</div><p class="update-desc">🏬 Barra inferior fixa na página de produto com valor e botão de comprar — melhora a usabilidade mobile</p></div>
+      <div class="update-card" style="grid-column:1/-1"><div class="update-version">v2.3</div><p class="update-desc">⚽ Seletor de ligas na página de futebol — La Liga, Premier League, Serie A, Bundesliga, Ligue 1 e Brasileirão. O cliente filtra por liga e encontra o time mais rápido</p></div>
+    </div>
+
+    <div class="tags" style="margin-top:1.5rem">
+      <span class="tag">Shopify Liquid</span>
+      <span class="tag">CSS</span>
+      <span class="tag">UX Mobile</span>
+      <span class="tag">Iteração contínua</span>
+      <span class="tag">Claude Code</span>
+    </div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="container">
+    <p class="section-label">Resultados</p>
+    <h2 class="section-title">Primeiro mês de operação</h2>
+    <p class="section-desc">De 12 de janeiro a 12 de fevereiro de 2026, primeiro mês completo com tráfego pago e site no ar.</p>
+
+    <div class="results-grid">
+      <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento</span></div>
+      <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS</span></div>
+      <div class="metric-card"><span class="metric-val">44</span><span class="metric-lbl">Vendas no site</span></div>
+      <div class="metric-card"><span class="metric-val">9.480</span><span class="metric-lbl">Visitantes</span></div>
+      <div class="metric-card"><span class="metric-val">702</span><span class="metric-lbl">Add to cart</span></div>
+      <div class="metric-card"><span class="metric-val">554</span><span class="metric-lbl">Chegaram ao checkout</span></div>
+      <div class="metric-card"><span class="metric-val">R$2.140</span><span class="metric-lbl">Investimento em ads</span></div>
+      <div class="metric-card hl"><span class="metric-val">~R$10k</span><span class="metric-lbl">Média mensal · 4 meses</span></div>
+    </div>
+
+    <p style="font-size:.75rem;color:var(--text-muted);margin-top:1rem">* Média mensal de 4 meses a ser atualizada. · Fonte: Shopify Analytics + Meta Ads Manager</p>
+
+    <figure style="margin-top:2rem">
+      <h5 class="fig-heading">Faturamento de vendas pagas no período — relatório via IA de análise do Shopify</h5>
+      <img src="assets/faturamentoparis1mes.png" alt="Faturamento de R$ 10.289,52 no primeiro mês da Paris Multimarcas">
+    </figure>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="container">
+    <h2 class="cta-title">Bora construir juntos?</h2>
+    <p class="cta-sub">Aberto a projetos, freelas e conversas.</p>
+    <div class="cta-btns">
+      <a href="https://www.linkedin.com/in/paulo-victor-pereira/" target="_blank" class="btn btn-primary">LinkedIn</a>
+      <a href="mailto:paulovictorcarregal@gmail.com" class="btn btn-ghost">E-mail</a>
+      <a href="https://wa.me/5521974395509" target="_blank" class="btn btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Paulo Pereira · UX Designer · Rio de Janeiro · 2025</p>
+</footer>
+
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" aria-label="Fechar">×</button>
+  <img src="" alt="">
+</div>
+
+<script>
+  const lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(img=>{
+    img.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden';});
+  });
+  lb.addEventListener('click',e=>{if(e.target===lb||e.target.id==='lb-close'){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){lb.classList.remove('open');document.body.style.overflow='';}});
+</script>
+
+</body>
+</html>
