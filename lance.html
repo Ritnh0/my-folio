@@ -13,8 +13,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Font-family-01: Bricolage Grotesque (títulos) · Font-family-02: Inter (corpo) -->
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font-family-01: Bricolage Grotesque (títulos) · Font-family-02: Inter (corpo) · Font-family-03: Montserrat (Paris) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* ================================================
@@ -640,6 +640,64 @@
       font-size: .68rem; text-transform: uppercase;
       letter-spacing: .1em; color: var(--text-muted);
     }
+
+    /* ================================================
+       PARIS MULTIMARCAS — escopado sob #paris
+    ================================================ */
+    #paris {
+      --p-red:        #F50402;
+      --p-red-dim:    rgba(245,4,2,.12);
+      --p-red-border: rgba(245,4,2,.3);
+      --font-paris:   'Montserrat', sans-serif;
+    }
+    #paris .case-label { color: var(--p-red); }
+    #paris .case-title { font-family: var(--font-paris); }
+    #paris .case-meta  { font-size:.92rem;color:var(--text-secondary);line-height:1.8; }
+
+    #paris .metric-card.hl { background:var(--p-red-dim);border-color:var(--p-red-border); }
+    #paris .metric-card.hl .metric-val { color:var(--p-red); }
+
+    #paris .info-box.accent { border-left:3px solid var(--p-red); }
+    #paris .box-label { color:var(--p-red); }
+
+    #paris .tags .tag { background:var(--p-red-dim);border:1px solid var(--p-red-border);color:var(--p-red); }
+
+    #paris .step-role { background:rgba(245,4,2,.07);border-color:var(--p-red-border); }
+    #paris .step-role strong { color:var(--p-red); }
+
+    #paris .paris-section { padding:2rem 0;border-top:1px solid var(--border); }
+    #paris .section-label { font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--p-red);font-weight:700;margin-bottom:.5rem; }
+    #paris .section-title { font-family:var(--font-paris);font-size:clamp(1.3rem,4vw,1.9rem);color:var(--white);margin-bottom:.6rem;font-weight:800;line-height:1.2; }
+    #paris .section-desc { font-size:.88rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.8; }
+
+    /* Funil */
+    #paris .funil-box { background:var(--dark-2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem; }
+    #paris .funil-label { font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--p-red);font-weight:700;margin-bottom:1rem; }
+    #paris .funil-steps { display:flex;flex-direction:column;gap:.5rem; }
+    #paris .funil-step { display:flex;align-items:center;gap:.75rem; }
+    #paris .funil-bar { flex:1;border-radius:4px;padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--text-primary); }
+    #paris .funil-bar.s1{background:rgba(245,4,2,.22);}
+    #paris .funil-bar.s2{background:rgba(245,4,2,.16);margin-left:.75rem;color:var(--text-secondary);}
+    #paris .funil-bar.s3{background:rgba(245,4,2,.10);margin-left:1.5rem;color:var(--text-secondary);}
+    #paris .funil-bar.s4{background:rgba(245,4,2,.05);margin-left:2.25rem;color:var(--text-secondary);}
+    #paris .funil-pct { font-size:.7rem;color:var(--text-muted);margin-left:.4rem;white-space:nowrap; }
+    #paris .funil-num { font-family:var(--font-paris);font-weight:900;font-size:1rem;color:var(--p-red);min-width:58px;text-align:right;flex-shrink:0; }
+
+    /* Updates */
+    #paris .updates-grid { display:grid;grid-template-columns:1fr;gap:1rem;margin:1.25rem 0; }
+    @media(min-width:600px){ #paris .updates-grid { grid-template-columns:repeat(2,1fr); } }
+    #paris .update-card { background:var(--dark-2);border:1px solid var(--border);border-radius:16px;padding:1.25rem; }
+    #paris .update-version { font-family:var(--font-paris);font-size:1.05rem;font-weight:900;color:var(--p-red);margin-bottom:.4rem; }
+    #paris .update-desc { font-size:.82rem;color:var(--text-secondary);line-height:1.7; }
+
+    /* Style grid (cores + tipografia) */
+    #paris .style-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.25rem 0; }
+
+    /* Results grid */
+    #paris .results-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.5rem; }
+    @media(min-width:600px){ #paris .results-grid { grid-template-columns:repeat(4,1fr); } }
+
+    #paris .period-note { font-size:.78rem;color:var(--text-muted);margin-bottom:1.5rem; }
 
     /* ================================================
        COMING SOON
@@ -1580,24 +1638,172 @@
 ================================================ -->
 <section id="paris">
   <div class="container">
+
+    <!-- Header -->
     <div class="case-header">
       <p class="case-label">Case 02</p>
       <h2 class="case-title">Paris Multimarcas</h2>
       <p class="case-meta">Loja de roupas esportivas no RJ. Gestão de tráfego pago + criação e evolução contínua do site no Shopify.</p>
     </div>
-    <div class="metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:0;margin-bottom:1rem;">
-      <div class="metric-card hl">
-        <span class="metric-val" style="color:#F50402">R$10.289</span>
-        <span class="metric-lbl">Faturamento no 1º mês</span>
-      </div>
-      <div class="metric-card hl">
-        <span class="metric-val" style="color:#F50402">4,8x</span>
-        <span class="metric-lbl">ROAS do 1º mês</span>
+
+    <!-- Métricas destaque -->
+    <div class="metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:0;margin-bottom:.75rem;">
+      <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento no 1º mês</span></div>
+      <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS do 1º mês</span></div>
+    </div>
+
+    <!-- Papel -->
+    <div class="step-role" style="margin-bottom:1.5rem;">
+      <span class="step-role-icon">🎯</span>
+      <p><strong>Meu papel:</strong> Freela com escopo duplo: gestão de tráfego pago (Meta Ads) com campanha centrada em regatas NBA e criação e evolução contínua do site no Shopify. Da configuração da loja às melhorias de craft de UI mês a mês.</p>
+    </div>
+
+    <!-- Funil -->
+    <div class="funil-box">
+      <p class="funil-label">🔽 Funil de vendas — 1º mês</p>
+      <div class="funil-steps">
+        <div class="funil-step">
+          <div class="funil-bar s1">👁️ Visitantes</div>
+          <span class="funil-num">9.480</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s2">🛒 Add to cart <span class="funil-pct">7,4% dos visitantes</span></div>
+          <span class="funil-num">702</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s3">💳 Checkout <span class="funil-pct">79% dos que adicionaram</span></div>
+          <span class="funil-num">554</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s4">✅ Vendas concluídas <span class="funil-pct">7,9% do checkout</span></div>
+          <span class="funil-num">44</span>
+        </div>
       </div>
     </div>
-    <a href="paris.html" class="btn btn-primary btn-live" style="display:flex;justify-content:center;margin-top:1.25rem;">
-      Ver case completo →
-    </a>
+    <p class="period-note">📅 Período: 12 jan – 12 fev de 2026 · Fonte: Shopify Analytics</p>
+
+    <!-- Contexto -->
+    <div class="paris-section">
+      <p class="section-label">Contexto</p>
+      <h3 class="section-title">O que é a Paris Multimarcas</h3>
+      <p class="section-desc">Loja física e online de roupas esportivas no Rio de Janeiro. Catálogo com futebol, NBA, streetwear e marcas como Jordan, Adidas e Lacoste. A campanha foi centrada em regatas NBA — o produto com maior margem e demanda na época.</p>
+      <figure>
+        <h5 class="fig-heading">Nuvem de produtos mais pesquisados: Flamengo, Tênis, Conjunto e times NBA dominam o vocabulário dos clientes</h5>
+        <img src="assets/nuvemparis.jpeg" alt="Nuvem de palavras dos produtos mais buscados na Paris Multimarcas">
+      </figure>
+      <div class="tags">
+        <span class="tag">Meta Ads</span>
+        <span class="tag">NBA</span>
+        <span class="tag">Futebol</span>
+        <span class="tag">Shopify</span>
+        <span class="tag">Streetwear</span>
+      </div>
+    </div>
+
+    <!-- Design System -->
+    <div class="paris-section">
+      <p class="section-label">Design System</p>
+      <h3 class="section-title">Identidade Visual</h3>
+      <p class="section-desc">Paleta construída em cima da identidade Jordan — vermelho primário #F50402, preto e branco. Tipografia Montserrat Bold para títulos e Inter para corpo, reforçando a energia esportiva da marca.</p>
+      <div class="style-grid">
+        <figure>
+          <h5 class="fig-heading">Guia de cores</h5>
+          <img src="assets/coresparis.jpeg" alt="Guia de cores Paris Multimarcas">
+        </figure>
+        <figure>
+          <h5 class="fig-heading">Tipografia</h5>
+          <img src="assets/tipografiaparis.jpeg" alt="Guia de tipografia Paris Multimarcas">
+        </figure>
+      </div>
+      <div class="tags">
+        <span class="tag">Vermelho #F50402</span>
+        <span class="tag">Montserrat Bold</span>
+        <span class="tag">Inter</span>
+        <span class="tag">Jordan Brand</span>
+      </div>
+    </div>
+
+    <!-- Calculadora CEP -->
+    <div class="paris-section">
+      <p class="section-label">Decisão de UX</p>
+      <h3 class="section-title">Calculadora de Frete via API Frenet</h3>
+      <p class="section-desc">Um dos principais motivos de abandono em e-commerces de roupa é não saber o frete antes de chegar no checkout. Implementei uma calculadora de frete na página de produto integrada à API da Frenet, mostrando Sedex e PAC com prazo estimado antes do cliente adicionar ao carrinho.</p>
+      <div class="step-role">
+        <span class="step-role-icon">🎯</span>
+        <p><strong>Meu papel:</strong> Desenvolvi a integração com a API da Frenet via Cloudflare Worker como proxy e implementei o componente diretamente no tema Shopify em Liquid e CSS.</p>
+      </div>
+      <figure>
+        <h5 class="fig-heading">Calculadora de frete com Sedex e PAC — o cliente vê o valor e o prazo antes de adicionar ao carrinho</h5>
+        <img src="assets/calculadoracep.png" alt="Calculadora de frete Paris Multimarcas integrada via API Frenet">
+      </figure>
+      <div class="info-box accent">
+        <p class="box-label">Impacto na jornada</p>
+        <p>554 pessoas chegaram ao checkout no primeiro mês — isso só é possível quando o cliente já sabe o frete antes. A calculadora reduz a fricção de descoberta e aumenta a confiança na decisão de compra.</p>
+      </div>
+      <div class="tags">
+        <span class="tag">API Frenet</span>
+        <span class="tag">Cloudflare Worker</span>
+        <span class="tag">Liquid</span>
+        <span class="tag">Redução de fricção</span>
+        <span class="tag">Shopify</span>
+      </div>
+    </div>
+
+    <!-- Craft de UI -->
+    <div class="paris-section">
+      <p class="section-label">Craft de UI</p>
+      <h3 class="section-title">Melhorias contínuas mês a mês</h3>
+      <p class="section-desc">O site evoluiu progressivamente. Cada atualização foi documentada e comunicada ao cliente com versão numerada — criando transparência e ritmo de melhoria constante.</p>
+      <figure style="margin-bottom:1.5rem">
+        <h5 class="fig-heading">Atualizações de Fevereiro: v1.1 → v1.4</h5>
+        <img src="assets/attfevereiro.jpeg" alt="Atualizações de fevereiro do site Paris Multimarcas v1.1 a v1.4">
+      </figure>
+      <div class="updates-grid">
+        <div class="update-card"><div class="update-version">v1.1</div><p class="update-desc">🏀 Seletor de times adicionado na página de coleção NBA — cliente filtra por Lakers, Bulls, Celtics e mais</p></div>
+        <div class="update-card"><div class="update-version">v1.2</div><p class="update-desc">🏬 Botão de catálogo em destaque · Botão "Comprar" em vermelho · Preços em verde claro para contraste</p></div>
+        <div class="update-card"><div class="update-version">v1.3</div><p class="update-desc">🤖 Agente de IA no ChatGPT que analisa a foto da roupa e gera descrições persuasivas automaticamente</p></div>
+        <div class="update-card"><div class="update-version">v1.4</div><p class="update-desc">🏷️ Botão de catálogo atualizado com logo Air Jordan · Valor das parcelas exibido abaixo do preço total</p></div>
+      </div>
+      <figure style="margin-top:1.5rem;margin-bottom:1.5rem">
+        <h5 class="fig-heading">Atualizações de Março/Abril: v2.1 → v2.3</h5>
+        <img src="assets/attmarço.jpeg" alt="Atualizações de março e abril do site Paris Multimarcas v2.1 a v2.3">
+      </figure>
+      <div class="updates-grid">
+        <div class="update-card"><div class="update-version">v2.1</div><p class="update-desc">🏀 Calculadora de frete na página de produto — cliente vê Sedex e PAC com prazo antes de adicionar ao carrinho</p></div>
+        <div class="update-card"><div class="update-version">v2.2</div><p class="update-desc">🏬 Barra inferior fixa na página de produto com valor e botão de comprar — melhora a usabilidade mobile</p></div>
+        <div class="update-card" style="grid-column:1/-1"><div class="update-version">v2.3</div><p class="update-desc">⚽ Seletor de ligas na página de futebol — La Liga, Premier League, Serie A, Bundesliga, Ligue 1 e Brasileirão. O cliente filtra por liga e encontra o time mais rápido</p></div>
+      </div>
+      <div class="tags" style="margin-top:1.25rem">
+        <span class="tag">Shopify Liquid</span>
+        <span class="tag">CSS</span>
+        <span class="tag">UX Mobile</span>
+        <span class="tag">Iteração contínua</span>
+        <span class="tag">Claude Code</span>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="paris-section">
+      <p class="section-label">Resultados</p>
+      <h3 class="section-title">Primeiro mês de operação</h3>
+      <p class="section-desc">De 12 de janeiro a 12 de fevereiro de 2026, primeiro mês completo com tráfego pago e site no ar.</p>
+      <div class="results-grid">
+        <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento</span></div>
+        <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS</span></div>
+        <div class="metric-card"><span class="metric-val">44</span><span class="metric-lbl">Vendas no site</span></div>
+        <div class="metric-card"><span class="metric-val">9.480</span><span class="metric-lbl">Visitantes</span></div>
+        <div class="metric-card"><span class="metric-val">702</span><span class="metric-lbl">Add to cart</span></div>
+        <div class="metric-card"><span class="metric-val">554</span><span class="metric-lbl">Chegaram ao checkout</span></div>
+        <div class="metric-card"><span class="metric-val">R$2.140</span><span class="metric-lbl">Investimento em ads</span></div>
+        <div class="metric-card hl"><span class="metric-val">~R$10k</span><span class="metric-lbl">Média mensal · 4 meses</span></div>
+      </div>
+      <p style="font-size:.75rem;color:var(--text-muted);margin-top:1rem">* Média mensal de 4 meses a ser atualizada · Fonte: Shopify Analytics + Meta Ads Manager</p>
+      <figure style="margin-top:1.5rem">
+        <h5 class="fig-heading">Faturamento de vendas pagas no período — relatório via IA de análise do Shopify</h5>
+        <img src="assets/faturamentoparis1mes.png" alt="Faturamento de R$ 10.289,52 no primeiro mês da Paris Multimarcas">
+      </figure>
+    </div>
+
   </div>
 </section>
 
