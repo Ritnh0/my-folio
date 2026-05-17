@@ -700,6 +700,81 @@
     #paris .period-note { font-size:.78rem;color:var(--text-muted);margin-bottom:1.5rem; }
 
     /* ================================================
+       VITRINE — dois cases lado a lado
+    ================================================ */
+    #vitrine {
+      padding: 3rem 0 1rem;
+    }
+    #vitrine .vitrine-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 1.5rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .vitrine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 500px) {
+      .vitrine-grid { grid-template-columns: 1fr; }
+    }
+    .vitrine-card {
+      display: block;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .vitrine-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+    }
+    .vitrine-card.c-urso:hover  { border-color: var(--orange); }
+    .vitrine-card.c-paris:hover { border-color: #F50402; }
+    .vitrine-card img {
+      width: 100%; height: 180px;
+      object-fit: cover; object-position: top;
+      border-radius: 0;
+      display: block;
+    }
+    .vitrine-info {
+      padding: .9rem 1rem 1rem;
+    }
+    .vitrine-num {
+      font-size: .65rem; text-transform: uppercase;
+      letter-spacing: .12em; font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .c-urso  .vitrine-num { color: var(--orange); }
+    .c-paris .vitrine-num { color: #F50402; }
+    .vitrine-name {
+      font-family: var(--font-heading);
+      font-size: 1rem; font-weight: 800;
+      color: var(--white); margin-bottom: .3rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .c-paris .vitrine-name { font-family: 'Montserrat', sans-serif; }
+    .vitrine-desc {
+      font-size: .78rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .vitrine-cta {
+      display: inline-block;
+      margin-top: .65rem;
+      font-size: .75rem; font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .c-urso  .vitrine-cta { color: var(--orange); }
+    .c-paris .vitrine-cta { color: #F50402; }
+
+    /* ================================================
        COMING SOON
     ================================================ */
     .coming-soon {
@@ -862,6 +937,39 @@
           <strong class="c-yellow">Espanhol Básico</strong> em 1 ano na <strong class="c-red">Yes Idiomas</strong>
         </p>
       </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     VITRINE — navegação pelos cases
+================================================ -->
+<section id="vitrine">
+  <div class="container">
+    <p class="vitrine-title">Cases</p>
+    <div class="vitrine-grid">
+
+      <a href="#urso" class="vitrine-card c-urso">
+        <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup Urso Móveis">
+        <div class="vitrine-info">
+          <p class="vitrine-num">Case 01</p>
+          <p class="vitrine-name">Urso Móveis</p>
+          <p class="vitrine-desc">Case completo de UX Design: pesquisa, estratégia, arquitetura e implementação no Shopify.</p>
+          <span class="vitrine-cta">Ver case →</span>
+        </div>
+      </a>
+
+      <a href="#paris" class="vitrine-card c-paris">
+        <img src="assets/paris-mockup.png" alt="Mockup Paris Multimarcas">
+        <div class="vitrine-info">
+          <p class="vitrine-num">Case 02</p>
+          <p class="vitrine-name">Paris Multimarcas</p>
+          <p class="vitrine-desc">Tráfego pago e UI Design: R$10.289 de faturamento no primeiro mês com ROAS de 4,8x.</p>
+          <span class="vitrine-cta">Ver case →</span>
+        </div>
+      </a>
 
     </div>
   </div>
