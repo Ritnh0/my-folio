@@ -4,14 +4,2005 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paulo Pereira — UX Designer</title>
-  <meta http-equiv="refresh" content="0; url=/lance">
+  <meta name="description" content="Portfólio de Paulo Pereira, UX Designer Junior. Crio experiências digitais que vendem — do tráfego ao e-commerce.">
+  <meta property="og:title" content="Paulo Pereira — UX Designer">
+  <meta property="og:description" content="Portfólio de Paulo Pereira, UX Designer Junior. Cases de UX Design e tráfego pago.">
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Font-family-01: Bricolage Grotesque (títulos) · Font-family-02: Inter (corpo) · Font-family-03: Montserrat (Paris) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    body { background: #0C111D; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: sans-serif; }
-    a { color: #f2790e; font-size: 1rem; }
+    /* ================================================
+       DESIGN SYSTEM
+       Paleta Urso: Laranja #f2790e · Dark #0C111D
+       Tipografia: Bricolage Grotesque (headings) · Inter (body)
+    ================================================ */
+    :root {
+      --orange:        #f2790e;
+      --orange-light:  #ff9a3c;
+      --orange-dim:    rgba(242,121,14,.12);
+      --orange-border: rgba(242,121,14,.28);
+      --beige:         #E5D8C6;
+      --beige-dim:     rgba(229,216,198,.07);
+      --dark:          #0C111D;
+      --dark-2:        #131928;
+      --dark-3:        #1c2335;
+      --dark-4:        #242d3f;
+      --white:         #FFFFFF;
+      --text-primary:  #eee8df;
+      --text-secondary:#a8b0c8;
+      --text-muted:    #636d87;
+      --border:        rgba(255,255,255,.08);
+      --border-orange: rgba(242,121,14,.3);
+      --figma-purple:  #7B61FF;
+
+      /* Font-family-01: títulos / Font-family-02: corpo */
+      --font-heading: 'Bricolage Grotesque', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --r-sm:   6px;
+      --r-md:   12px;
+      --r-lg:   16px;
+      --r-xl:   24px;
+      --r-full: 9999px;
+
+      --shadow-md: 0 4px 20px rgba(0,0,0,.55);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,.65);
+    }
+
+    /* ---- reset ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    img   { max-width: 100%; height: auto; display: block; border-radius: var(--r-md); }
+    a     { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+    ul, ol { list-style: none; padding: 0; }
+
+    /* ---- layout ---- */
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    section { padding: 5rem 0; }
+
+    /* ================================================
+       NAV
+    ================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: rgba(12,17,29,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font-heading);
+      font-size: .78rem; font-weight: 700;
+      color: var(--orange);
+      letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      object-fit: contain;
+      flex-shrink: 0;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: .8rem; color: var(--text-muted);
+      font-family: var(--font-body);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ================================================
+       HERO — portfólio principal
+       Imagens: assets/mainherobackground.png (background) · assets/paulo-main.png (foto)
+    ================================================ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding-top: 60px; /* clearance da nav fixa */
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, transparent 60%);
+      z-index: 1;
+    }
+    @media (min-width: 640px) {
+      .hero-bg::after { display: block; }
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 2.25rem 2rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 6vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      margin-bottom: .5rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+
+    /* Cargo com barra azul à esquerda */
+    .role-wrap {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: 1rem;
+    }
+    .hero-accent {
+      width: 3px;
+      height: 20px;
+      background: #4a9fff;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .role {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(.95rem, 3.5vw, 1.15rem);
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+
+    .hero-p {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(.8rem, 3vw, .95rem);
+      line-height: 1.2;
+      color: var(--white);
+      text-shadow: 1px 4px 4px black;
+      margin-top: .5rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .hero-p.hl {
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+    }
+
+    .hero-photo {
+      margin-top: auto;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-photo img {
+      width: min(280px, 72vw);
+      height: auto;
+      border-radius: 0;
+      filter: drop-shadow(0px 6px 8px rgba(0,0,0,.5));
+    }
+
+    @media (min-width: 640px) {
+      .hero-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 72px;
+      }
+      .role-wrap { justify-content: center; }
+      .hero-photo {
+        margin-top: 1.5rem;
+        padding-top: 0;
+        align-items: center;
+      }
+      .hero-photo img { width: 260px; }
+    }
+
+    /* ================================================
+       EXPERIENCE CARDS — dentro do hero (sobre a grama)
+    ================================================ */
+    .hero-exp {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 0 3rem;
+    }
+    #experiencia {
+      padding: 0;
+      background: transparent;
+    }
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .exp-card {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: rgba(255,255,255,.13);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.18);
+    }
+    .exp-card.lg { border-radius: 14px; align-items: center; }
+    .exp-logo {
+      width: 40px; height: 40px;
+      object-fit: contain;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+    .exp-logo.lg {
+      width: 68px; height: 68px; border-radius: 20px;
+    }
+    .exp-text {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--white);
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .exp-text strong { font-weight: 700; }
+    .c-pink   { color: #ff5fb0; }
+    .c-purple { color: #b78dff; }
+    .c-blue   { color: #67b1ff; }
+    .c-yellow { color: #ffb547; }
+    .c-red    { color: #ff6b73; }
+
+    /* ================================================
+       SOLO CARD — papel no topo do case
+    ================================================ */
+    .solo-card {
+      background: linear-gradient(135deg, rgba(242,121,14,.1), rgba(242,121,14,.03));
+      border: 1px solid var(--border-orange);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .solo-roles {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .solo-role-tag {
+      font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--orange);
+      background: var(--orange-dim);
+      border: 1px solid var(--orange-border);
+      padding: .25rem .85rem; border-radius: var(--r-full);
+    }
+    .solo-desc {
+      font-size: .9rem; color: var(--white);
+      line-height: 1.75; font-family: var(--font-body);
+    }
+
+    /* ================================================
+       STEP ROLE — meu papel dentro de cada step
+    ================================================ */
+    .step-role {
+      display: flex; gap: .75rem;
+      background: rgba(242,121,14,.07);
+      border: 1px solid var(--border-orange);
+      border-radius: var(--r-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .step-role-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .15rem; }
+    .step-role p {
+      font-size: .88rem; color: var(--white);
+      line-height: 1.75; margin: 0;
+    }
+    .step-role strong { color: var(--orange); font-weight: 600; }
+
+    /* ================================================
+       BUTTONS
+    ================================================ */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .65rem 1.35rem;
+      border-radius: var(--r-full);
+      font-size: .82rem; font-weight: 600;
+      font-family: var(--font-body);
+      transition: all .2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(242,121,14,.38);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--border-orange); color: var(--orange); }
+    .btn-figma { background: var(--figma-purple); color: var(--white); }
+    .btn-figma:hover { opacity: .85; transform: translateY(-2px); }
+    .btn-drive {
+      background: var(--dark-4); color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-drive:hover { border-color: var(--border-orange); color: var(--text-primary); }
+
+    /* ================================================
+       CASE HEADER
+    ================================================ */
+    .case-header {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem; margin-bottom: 3rem;
+    }
+    .case-label {
+      font-size: .7rem; text-transform: uppercase;
+      letter-spacing: .14em; color: var(--orange);
+      font-weight: 600; margin-bottom: .75rem;
+    }
+    .case-title {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--white); margin-bottom: .75rem;
+    }
+    .case-meta { font-size: .88rem; color: var(--text-muted); line-height: 1.8; }
+
+    /* ================================================
+       BIG PICTURE
+    ================================================ */
+    .bigpicture-wrap { margin-bottom: 3rem; }
+    .bigpicture-wrap img {
+      width: 100%; border-radius: var(--r-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .btn-live {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      padding: .9rem 2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      border-radius: var(--r-full);
+    }
+
+    /* ================================================
+       PROBLEM STATEMENT
+    ================================================ */
+    .problem-statement {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: var(--r-lg);
+      padding: 2rem; margin-bottom: 3rem;
+    }
+    .label-tag {
+      font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .14em; color: var(--orange);
+      font-weight: 600; margin-bottom: 1rem;
+    }
+    .problem-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.05rem, 3vw, 1.35rem);
+      color: var(--beige); margin-bottom: 1.5rem;
+      font-style: italic; line-height: 1.55;
+    }
+    .problem-list { display: flex; flex-direction: column; gap: .65rem; }
+    .problem-list li {
+      font-size: .88rem; color: var(--text-secondary);
+      padding-left: .25rem;
+    }
+
+    /* ================================================
+       STEPPER
+    ================================================ */
+    .stepper { margin-bottom: 4rem; }
+    .step { border-bottom: 1px solid var(--border); }
+    .step:first-child { border-top: 1px solid var(--border); }
+
+    .step-header {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      align-items: stretch;
+    }
+    .step-dot-col {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 5px;
+      padding-bottom: 1.5rem;
+    }
+    .step-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    }
+    .step-dot.done { background: var(--orange); }
+    .step-dot.active {
+      background: transparent;
+      border: 2px solid var(--orange);
+      box-shadow: 0 0 10px rgba(242,121,14,.45);
+    }
+    .step-line {
+      width: 2px; flex: 1; min-height: 24px;
+      background: linear-gradient(to bottom, var(--orange), rgba(242,121,14,.15));
+      margin-top: 6px;
+      border-radius: 2px;
+    }
+    .step-body h3 {
+      font-size: 1.15rem; color: var(--white);
+      margin-bottom: .25rem;
+    }
+    .step-body > p {
+      font-size: .83rem; color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .expand-btn {
+      background: var(--orange);
+      border: none;
+      color: var(--white);
+      font-size: .72rem; font-family: var(--font-body);
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: .45rem 1.25rem;
+      border-radius: var(--r-full);
+      cursor: pointer; transition: all .2s;
+    }
+    .expand-btn::after {
+      content: ' ↓';
+      display: inline-block;
+      transition: transform .25s ease;
+    }
+    .expand-btn.is-open::after {
+      transform: rotate(180deg);
+    }
+    .expand-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .expand-btn.is-open {
+      background: transparent;
+      border: 1px solid var(--border-orange);
+      color: var(--orange);
+    }
+
+    /* ================================================
+       STEP DETAIL — accordion
+    ================================================ */
+    .step-detail {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .55s cubic-bezier(.4,0,.2,1);
+    }
+    .step-detail.is-open { max-height: none; }
+    .step-detail-inner {
+      display: flex; flex-direction: column;
+      gap: 3rem; padding-bottom: 3rem;
+    }
+
+    /* ================================================
+       CARD (problema / artefato)
+    ================================================ */
+    .card-num {
+      font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .14em; color: var(--orange);
+      font-weight: 600; margin-bottom: .75rem;
+    }
+    .card-title {
+      font-size: 1.35rem; color: var(--white);
+      margin-bottom: .75rem;
+    }
+    .card-desc {
+      font-size: .92rem; color: var(--text-secondary);
+      margin-bottom: 1.5rem; line-height: 1.8;
+    }
+
+    figure { margin: 1.5rem 0; }
+    figure img { width: 100%; border: 1px solid var(--border); }
+
+    .fig-heading {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: .65rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+
+    .img-wide {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0;
+    }
+    .img-wide img {
+      min-width: 580px; width: 100%;
+      border: 1px solid var(--border);
+    }
+
+    .sol-list { display: flex; flex-direction: column; gap: .5rem; margin: 1rem 0; }
+    .sol-list li {
+      font-size: .85rem; color: var(--text-secondary);
+      padding: .5rem .85rem;
+      background: var(--beige-dim);
+      border-left: 2px solid var(--orange);
+      border-radius: var(--r-sm);
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+    .tag {
+      font-size: .75rem; padding: .35rem 1rem;
+      background: var(--orange-dim);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--r-full);
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .info-box {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 1.25rem; margin: 1rem 0;
+    }
+    .info-box.accent { border-left: 3px solid var(--orange); }
+    .box-label {
+      font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--orange);
+      font-weight: 600; margin-bottom: .65rem;
+    }
+    .info-box p { font-size: .85rem; color: var(--text-secondary); line-height: 1.8; }
+
+    .insight-list { display: flex; flex-direction: column; gap: .4rem; margin: .75rem 0; }
+    .insight-list li { font-size: .85rem; color: var(--text-secondary); }
+
+    .num-list { counter-reset: s; display: flex; flex-direction: column; gap: .75rem; }
+    .num-list li {
+      counter-increment: s;
+      display: grid; grid-template-columns: 28px 1fr;
+      gap: .75rem; align-items: start;
+      font-size: .87rem; color: var(--text-secondary);
+    }
+    .num-list li::before {
+      content: counter(s);
+      display: flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--orange-dim); border: 1px solid var(--orange-border);
+      border-radius: 50%; font-size: .72rem; font-weight: 700;
+      color: var(--orange); font-family: var(--font-heading);
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+
+    /* ================================================
+       METRICS
+    ================================================ */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem; margin-top: 3rem;
+    }
+    .metric-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem; text-align: center;
+    }
+    .metric-card.hl {
+      background: var(--orange-dim);
+      border-color: var(--border-orange);
+    }
+    .metric-val {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      color: var(--white); display: block; margin-bottom: .2rem;
+    }
+    .metric-card.hl .metric-val { color: var(--orange); }
+    .metric-lbl {
+      font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--text-muted);
+    }
+
+    /* ================================================
+       PARIS MULTIMARCAS — escopado sob #paris
+    ================================================ */
+    #paris {
+      --p-red:        #F50402;
+      --p-red-dim:    rgba(245,4,2,.12);
+      --p-red-border: rgba(245,4,2,.3);
+      --font-paris:   'Montserrat', sans-serif;
+    }
+    #paris .case-label { color: var(--p-red); }
+    #paris .case-title { font-family: var(--font-paris); }
+    #paris .case-meta  { font-size:.92rem;color:var(--text-secondary);line-height:1.8; }
+
+    #paris .metric-card.hl { background:var(--p-red-dim);border-color:var(--p-red-border); }
+    #paris .metric-card.hl .metric-val { color:var(--p-red); }
+
+    #paris .info-box.accent { border-left:3px solid var(--p-red); }
+    #paris .box-label { color:var(--p-red); }
+
+    #paris .tags .tag { background:var(--p-red-dim);border:1px solid var(--p-red-border);color:var(--p-red); }
+
+    #paris .step-role { background:rgba(245,4,2,.07);border-color:var(--p-red-border); }
+    #paris .step-role strong { color:var(--p-red); }
+
+    #paris .paris-section { padding:2rem 0;border-top:1px solid var(--border); }
+    #paris .section-label { font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--p-red);font-weight:700;margin-bottom:.5rem; }
+    #paris .section-title { font-family:var(--font-paris);font-size:clamp(1.3rem,4vw,1.9rem);color:var(--white);margin-bottom:.6rem;font-weight:800;line-height:1.2; }
+    #paris .section-desc { font-size:.88rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.8; }
+
+    /* Funil */
+    #paris .funil-box { background:var(--dark-2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem; }
+    #paris .funil-label { font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--p-red);font-weight:700;margin-bottom:1rem; }
+    #paris .funil-steps { display:flex;flex-direction:column;gap:.5rem; }
+    #paris .funil-step { display:flex;align-items:center;gap:.75rem; }
+    #paris .funil-bar { flex:1;border-radius:4px;padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--text-primary); }
+    #paris .funil-bar.s1{background:rgba(245,4,2,.22);}
+    #paris .funil-bar.s2{background:rgba(245,4,2,.16);margin-left:.75rem;color:var(--text-secondary);}
+    #paris .funil-bar.s3{background:rgba(245,4,2,.10);margin-left:1.5rem;color:var(--text-secondary);}
+    #paris .funil-bar.s4{background:rgba(245,4,2,.05);margin-left:2.25rem;color:var(--text-secondary);}
+    #paris .funil-pct { font-size:.7rem;color:var(--text-muted);margin-left:.4rem;white-space:nowrap; }
+    #paris .funil-num { font-family:var(--font-paris);font-weight:900;font-size:1rem;color:var(--p-red);min-width:58px;text-align:right;flex-shrink:0; }
+
+    /* Updates */
+    #paris .updates-grid { display:grid;grid-template-columns:1fr;gap:1rem;margin:1.25rem 0; }
+    @media(min-width:600px){ #paris .updates-grid { grid-template-columns:repeat(2,1fr); } }
+    #paris .update-card { background:var(--dark-2);border:1px solid var(--border);border-radius:16px;padding:1.25rem; }
+    #paris .update-version { font-family:var(--font-paris);font-size:1.05rem;font-weight:900;color:var(--p-red);margin-bottom:.4rem; }
+    #paris .update-desc { font-size:.82rem;color:var(--text-secondary);line-height:1.7; }
+
+    /* Style grid (cores + tipografia) */
+    #paris .style-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.25rem 0; }
+
+    /* Results grid */
+    #paris .results-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.5rem; }
+    @media(min-width:600px){ #paris .results-grid { grid-template-columns:repeat(4,1fr); } }
+
+    #paris .period-note { font-size:.78rem;color:var(--text-muted);margin-bottom:1.5rem; }
+
+    /* ================================================
+       VITRINE — dois cases lado a lado
+    ================================================ */
+    #vitrine {
+      padding: 3rem 0 1rem;
+    }
+    #vitrine .vitrine-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 1.5rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .vitrine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 500px) {
+      .vitrine-grid { grid-template-columns: 1fr; }
+    }
+    .vitrine-card {
+      display: block;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .vitrine-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+    }
+    .vitrine-card.c-urso:hover  { border-color: var(--orange); }
+    .vitrine-card.c-paris:hover { border-color: #F50402; }
+    .vitrine-card img {
+      width: 100%; height: 180px;
+      object-fit: cover; object-position: top;
+      border-radius: 0;
+      display: block;
+    }
+    .vitrine-info {
+      padding: .9rem 1rem 1rem;
+    }
+    .vitrine-num {
+      font-size: .65rem; text-transform: uppercase;
+      letter-spacing: .12em; font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .c-urso  .vitrine-num { color: var(--orange); }
+    .c-paris .vitrine-num { color: #F50402; }
+    .vitrine-name {
+      font-family: var(--font-heading);
+      font-size: 1rem; font-weight: 800;
+      color: var(--white); margin-bottom: .3rem;
+      font-variation-settings: 'opsz' 14, 'wdth' 100;
+    }
+    .c-paris .vitrine-name { font-family: 'Montserrat', sans-serif; }
+    .vitrine-desc {
+      font-size: .78rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .vitrine-cta {
+      display: inline-block;
+      margin-top: .65rem;
+      font-size: .75rem; font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .c-urso  .vitrine-cta { color: var(--orange); }
+    .c-paris .vitrine-cta { color: #F50402; }
+
+    /* ================================================
+       COMING SOON
+    ================================================ */
+    .coming-soon {
+      border: 1px dashed var(--border);
+      border-radius: var(--r-xl);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .soon-badge {
+      display: inline-block;
+      background: var(--dark-4); border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: .68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .1em;
+      padding: .3rem 1rem; border-radius: var(--r-full);
+      margin-bottom: 1rem;
+    }
+    .coming-soon h3 { font-size: 1.35rem; color: var(--text-secondary); margin-bottom: .5rem; }
+    .coming-soon p  { font-size: .85rem; color: var(--text-muted); }
+
+    /* ================================================
+       CTA
+    ================================================ */
+    #contato {
+      text-align: center;
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+    }
+    #contato h2 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--white); margin-bottom: .75rem;
+    }
+    .cta-sub { font-size: .95rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+
+    /* ================================================
+       LIGHTBOX
+    ================================================ */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,.93);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 1.5rem;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-lg);
+      cursor: default;
+      animation: lbIn .2s ease;
+    }
+    #lb-close {
+      position: absolute;
+      top: 1rem; right: 1.25rem;
+      background: none; border: none;
+      color: #fff; font-size: 2.2rem;
+      cursor: pointer; line-height: 1;
+      opacity: .6; transition: opacity .15s;
+    }
+    #lb-close:hover { opacity: 1; }
+    @keyframes lbIn {
+      from { transform: scale(.93); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    /* cursor zoom nas imagens clicáveis */
+    figure img, .img-wide img { cursor: zoom-in; }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      font-size: .72rem; color: var(--text-muted);
+    }
+
+    /* ================================================
+       RESPONSIVE
+    ================================================ */
+    @media (min-width: 768px) {
+      .container { padding: 0 2rem; }
+      .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+    }
   </style>
 </head>
 <body>
-  <a href="/lance">Acessar portfólio →</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="assets/baricon.png" alt="Paulo Pereira" class="nav-icon">
+    Paulo Pereira
+  </a>
+  <div class="nav-links">
+    <a href="#urso">Cases</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+
+<!-- ================================================
+     HERO — portfólio principal
+     assets/mainherobackground.png · assets/paulo-main.png
+================================================ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="assets/mainherobackground.png" alt="">
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 class="hero-name">Oi, eu sou o Paulo!</h1>
+      <div class="role-wrap">
+        <div class="hero-accent"></div>
+        <span class="role">UX Designer Junior</span>
+      </div>
+      <p class="hero-p">Crio experiências digitais que vendem.</p>
+      <p class="hero-p">De campanhas de tráfego, estratégias de negócio até e-commerces/sites completos.</p>
+      <p class="hero-p">Vivo no Rio de Janeiro. Conheça meu portfolio</p>
+    </div>
+
+    <div class="hero-photo">
+      <img src="assets/paulo-main.png" alt="Paulo Pereira">
+    </div>
+  </div>
+
+  <!-- Cards de experiência sobre a grama -->
+  <div id="experiencia" class="hero-exp">
+    <div class="exp-list" style="max-width:760px;margin:0 auto;padding:0 1.5rem;">
+
+      <div class="exp-card">
+        <img src="assets/uxunicornio.png" alt="UX Unicórnio" class="exp-logo">
+        <p class="exp-text">
+          Estudante de <strong>IA/UX Design</strong> no Programa <strong class="c-pink">UX Unicórnio</strong>
+        </p>
+      </div>
+
+      <div class="exp-card">
+        <img src="assets/designboost.png" alt="Design Boost" class="exp-logo">
+        <p class="exp-text">
+          Estudante de <strong>UI Design</strong> no <strong class="c-purple">Design Boost</strong>
+        </p>
+      </div>
+
+      <div class="exp-card lg">
+        <img src="assets/yes.png" alt="Yes Idiomas" class="exp-logo lg">
+        <p class="exp-text">
+          Adquiri <strong class="c-blue">Inglês Fluente</strong> em 3 anos<br>
+          <strong class="c-yellow">Espanhol Básico</strong> em 1 ano na <strong class="c-red">Yes Idiomas</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     VITRINE — navegação pelos cases
+================================================ -->
+<section id="vitrine">
+  <div class="container">
+    <p class="vitrine-title">Cases</p>
+    <div class="vitrine-grid">
+
+      <a href="#urso" class="vitrine-card c-urso">
+        <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup Urso Móveis">
+        <div class="vitrine-info">
+          <p class="vitrine-num">Case 01</p>
+          <p class="vitrine-name">Urso Móveis</p>
+          <p class="vitrine-desc">Case completo de UX Design: pesquisa, estratégia, arquitetura e implementação no Shopify.</p>
+          <span class="vitrine-cta">Ver case →</span>
+        </div>
+      </a>
+
+      <a href="#paris" class="vitrine-card c-paris">
+        <img src="assets/paris-mockup.png" alt="Mockup Paris Multimarcas">
+        <div class="vitrine-info">
+          <p class="vitrine-num">Case 02</p>
+          <p class="vitrine-name">Paris Multimarcas</p>
+          <p class="vitrine-desc">Tráfego pago e UI Design: R$10.289 de faturamento no primeiro mês com ROAS de 4,8x.</p>
+          <span class="vitrine-cta">Ver case →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     CASE 1 — URSO MÓVEIS
+================================================ -->
+<section id="urso">
+  <div class="container">
+
+    <div class="case-header">
+      <p class="case-label">Case 01</p>
+      <h2 class="case-title">Urso Móveis</h2>
+      <p class="case-meta">Loja de móveis online no RJ. Vendas 100% via vendedor + WhatsApp. Criei seu primeiro e-commerce no final de 2025.</p>
+    </div>
+
+    <!-- Resultado em destaque -->
+    <h3 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.75rem;font-variation-settings:'opsz' 14,'wdth' 100;">Resultados</h3>
+    <div class="metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:0;margin-bottom:.75rem;">
+      <div class="metric-card">
+        <span class="metric-val">0,45%</span>
+        <span class="metric-lbl">CRO no começo do projeto</span>
+      </div>
+      <div class="metric-card hl">
+        <span class="metric-val">1,23%</span>
+        <span class="metric-lbl">CRO agora ↑</span>
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:3rem;padding:0 .25rem;">
+      <strong style="color:var(--text-secondary)">CRO</strong> é a taxa de conversão: a cada 100 pessoas que visitam o site, quantas fazem uma compra.
+    </p>
+
+    <div class="solo-card">
+      <div class="solo-roles">
+        <span class="solo-role-tag">Projeto solo</span>
+        <span class="solo-role-tag">UX Designer</span>
+        <span class="solo-role-tag">Estrategista</span>
+        <span class="solo-role-tag">Implementador</span>
+      </div>
+      <p class="solo-desc">Fui o único responsável por este projeto. Da pesquisa à implementação, sem agência, sem equipe, sem terceirização técnica.</p>
+    </div>
+
+    <div class="bigpicture-wrap">
+      <img src="assets/bigpicture%20-%20mockup.png" alt="Mockup do site Urso Móveis">
+      <a href="https://ursomoveis.com" target="_blank" class="btn btn-primary btn-live">
+        🌐&nbsp; Ver site ao vivo: ursomoveis.com
+      </a>
+    </div>
+
+    <div class="problem-statement">
+      <p class="label-tag">Problemas resolvidos</p>
+      <p class="problem-quote">"Vendedor trabalhando até a noite para vender mais, leads chegando mas não convertendo, e zero visibilidade sobre o porquê."</p>
+      <ul class="problem-list">
+        <li>🌙 Jornada do vendedor se estendia até à noite respondendo WhatsApp manualmente</li>
+        <li>📉 Muitos clientes entrando, baixa conversão, sem saber onde estava o gargalo</li>
+        <li>📊 Nenhum método de análise de dados para tomar boas decisões</li>
+      </ul>
+    </div>
+
+    <!-- STEPPER -->
+    <div class="stepper">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot done"></span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-body">
+            <h3>Research, Strategy &amp; Writing</h3>
+            <p>Pesquisa qualitativa (survey com clientes), pesquisa quantitativa (experimento de CRO) e diagnóstico dos 3 problemas com resultados reais.</p>
+            <button class="expand-btn" data-target="step-1-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-1-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Conduzi toda a pesquisa sozinho. Realizei pesquisa quantitativa (experimento de CRO com integração do serviço de montagem), pesquisa qualitativa (survey com clientes segmentados e Matriz CSD), coletei dados via GA4 e Hotjar, fiz a desk research e identifiquei os 3 problemas prioritários. Tudo isso sem apoio de agência ou equipe.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Pesquisa Quantitativa</p>
+              <h4 class="card-title">Experimento: Integração do Serviço de Montagem</h4>
+
+              <div class="info-box accent">
+                <p class="box-label">🟨 Hipótese</p>
+                <p>Se integrarmos o serviço de montagem ao fluxo de compra, reduziremos o risco de comprar sem montador da loja por parte do cliente e aumentaremos significativamente o CRO.</p>
+              </div>
+
+              <div class="info-box" style="margin-top:1rem">
+                <p class="box-label">🟩 Experimento: Novembro 2025</p>
+                <ul class="insight-list">
+                  <li>✓ Adição do serviço de montagem opcional junto ao produto</li>
+                  <li>✓ Agendamento disponível a partir do dia seguinte da entrega</li>
+                  <li>✓ Reforço da montagem nas telas e no atendimento</li>
+                  <li>✓ Experiência simplificada: compra + montagem em uma decisão só</li>
+                  <li>✓ Selo de montagem adicionado nos criativos</li>
+                  <li>✓ Opção de montagem adicionada à página de produto</li>
+                </ul>
+                <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem">O experimento foi iniciado na jornada de compra no WhatsApp e, em seguida, foi feito um projeto de implementação no site. Detalhes sobre a precificação do serviço de montagem estão no próximo passo: <strong style="color:var(--text-secondary)">Estratégia &amp; Arquitetura.</strong></p>
+              </div>
+
+              <figure>
+                <h5 class="fig-heading">Funcionalidade de montagem opcional adicionada ao fluxo de compra</h5>
+                <img src="assets/add-montagem.png" alt="Feature de montagem adicionada ao produto">
+              </figure>
+
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">📈 Resultado observado</p>
+                <p>CRO no site: de <strong style="color:var(--text-primary)">0,45%</strong> para <strong style="color:var(--orange)">1,23%</strong>, um aumento de 173%.</p>
+              </div>
+
+              <figure>
+                <h5 class="fig-heading">Prova social: avaliações de clientes sobre a montagem como fator de convencimento e aumento de CRO</h5>
+                <img src="assets/prova-social.png" alt="Prova social com avaliações de clientes sobre o serviço de montagem">
+              </figure>
+
+              <div class="tags">
+                <span class="tag">Pesquisa Quanti</span>
+                <span class="tag">Experimento</span>
+                <span class="tag">CRO</span>
+                <span class="tag">Hipótese validada</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Pesquisa Qualitativa</p>
+              <h4 class="card-title">Survey com Clientes: Urso Móveis</h4>
+
+              <div class="info-box accent">
+                <p class="box-label">Matriz CSD: Ponto de partida</p>
+                <ul class="insight-list">
+                  <li><strong style="color:var(--text-primary)">Certezas:</strong> Clientes buscam lojas com montagem · Média de 4 min no site · Abandono por produto não encontrado · Abandono por bairro fora da cobertura</li>
+                  <li><strong style="color:var(--text-primary)">Dúvidas:</strong> Por que contratam montagem? · Preferem WhatsApp ou site? · Têm dificuldade de encontrar bairro? · O que fez comprar em outro lugar?</li>
+                  <li><strong style="color:var(--text-primary)">Suposições:</strong> Clientes que compraram pelo WhatsApp, pelo site, com montagem e os que abandonaram</li>
+                </ul>
+              </div>
+
+              <div class="info-box" style="margin-top:1rem">
+                <p class="box-label">Participantes: 3 clientes segmentados</p>
+                <ul class="insight-list">
+                  <li>✓ 2 clientes que compraram na Urso com serviço de montagem</li>
+                  <li>✓ 1 cliente que não conseguiu finalizar a compra</li>
+                </ul>
+                <div class="btn-row" style="margin-top:.75rem">
+                  <a href="https://docs.google.com/forms/d/1_gkZ2mMKJoPqgeZKKnufAJtC8_X9HJa8hZwtWnIC0oU/edit" target="_blank" class="btn btn-primary" style="font-size:.82rem">survey: clientes com montagem</a>
+                  <a href="https://docs.google.com/forms/d/1jb698sOjnswkeUDJokO3NiQPsQoUMDNw2KqXV8JbW8Q/edit" target="_blank" class="btn btn-ghost" style="font-size:.82rem">survey: clientes sem montagem</a>
+                </div>
+              </div>
+
+              <figure style="margin-top:1rem">
+                <h5 class="fig-heading">Principais resultados da survey</h5>
+                <img src="assets/resultadossurvey.png" alt="Principais resultados da survey com clientes da Urso Móveis">
+              </figure>
+
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">Principal aprendizado</p>
+                <p>O site exibe todos os móveis como disponíveis, mas a verificação real de estoque é feita pelo vendedor após a compra, criando fricção e frustrando clientes. A próxima evolução é integrar o estoque das fábricas parceiras ao site em tempo real.</p>
+              </div>
+
+              <div class="info-box" style="margin-top:1rem">
+                <p class="box-label">Próximos passos da pesquisa</p>
+                <p>Survey em andamento. O objetivo é ampliar para mais participantes e cobrir os segmentos que ainda não responderam: clientes que compraram só pelo WhatsApp e clientes que tiveram gargalo no atendimento. A pesquisa segue aberta e será atualizada conforme novos dados chegarem.</p>
+              </div>
+
+              <div class="tags">
+                <span class="tag">Pesquisa Quali</span>
+                <span class="tag">Survey</span>
+                <span class="tag">Matriz CSD</span>
+                <span class="tag">3 participantes</span>
+                <span class="tag">Em andamento</span>
+              </div>
+
+            </div>
+
+            <div>
+              <p class="card-num">Solução aplicada</p>
+              <h4 class="card-title">Fallback de CEP: do problema ao fluxo de recuperação</h4>
+              <p class="card-desc">50% dos clientes tiveram dificuldade no cálculo de frete. A partir desse dado, construímos dois fallbacks para não perder a venda por causa de um erro de CEP.</p>
+
+              <figure>
+                <h5 class="fig-heading">Fallback 1: botão "Não sei o meu CEP" permite ao cliente escolher o bairro e receber o orçamento direto no site, sem depender do número do CEP</h5>
+                <img src="assets/fallback1.png" alt="Botão Não sei o meu CEP e seleção por bairro">
+              </figure>
+              <figure>
+                <img src="assets/fallback2.png" alt="Seleção de bairro para cálculo de frete">
+              </figure>
+
+              <figure>
+                <h5 class="fig-heading">Fallback 2: se o CEP não estiver na nossa base de entrega, o cliente clica no botão de Fallback e é direcionado ao WhatsApp, onde envia o CEP para o vendedor passar o orçamento manualmente, reduzindo o risco de perder a venda</h5>
+                <img src="assets/fallback3.png" alt="Botão de fallback direciona cliente ao WhatsApp para envio de CEP">
+              </figure>
+
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">Lógica da arquitetura</p>
+                <p>CEP reconhecido? Orçamento automático no site. CEP desconhecido? Cliente envia pelo WhatsApp e o vendedor responde. Nenhum cliente fica sem resposta por falha técnica.</p>
+              </div>
+
+              <div class="tags">
+                <span class="tag">UX</span>
+                <span class="tag">Arquitetura de informação</span>
+                <span class="tag">Redução de fricção</span>
+                <span class="tag">Shopify</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">UX Writing — Vocabulário dos Clientes</p>
+              <h4 class="card-title">Nuvem de Palavras: O que os clientes mais falam</h4>
+              <p class="card-desc">Formada a partir de 3 anos de atendimento direto pelo WhatsApp como vendedor comissionado. As palavras mais frequentes dos clientes guiaram as decisões de copy do site, dos criativos e do atendimento automatizado.</p>
+              <figure>
+                <h5 class="fig-heading">Frete, montagem, grátis e cozinha lideram o vocabulário real dos clientes da Urso Móveis</h5>
+                <img src="assets/nuvem.png" alt="Nuvem de palavras com vocabulário real dos clientes da Urso Móveis">
+              </figure>
+              <div class="info-box accent">
+                <p class="box-label">Como foi usado no produto</p>
+                <ul class="insight-list">
+                  <li>✓ "Montagem disponível" destacado no criativo de anúncio</li>
+                  <li>✓ "Montagem" integrada com o produto</li>
+                  <li>✓ "Entrega hoje" usado como diferencial no atendimento e nas campanhas</li>
+                  <li>✓ "Pagamento no ato da entrega" reforçado no site e no WhatsApp</li>
+                </ul>
+              </div>
+              <div class="tags">
+                <span class="tag">UX Writing</span>
+                <span class="tag">Vocabulário do usuário</span>
+                <span class="tag">Pesquisa de campo</span>
+                <span class="tag">3 anos de atendimento</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Problema 01</p>
+              <h4 class="card-title">Jornada longa do vendedor comissionado</h4>
+              <p class="card-desc">Atendimento manual no WhatsApp até a noite atendendo cliente para fechar venda.</p>
+              <figure>
+                <h5 class="fig-heading">Com a criação do site, pedidos chegam a noite sem nenhum atendimento manual, assim consegui mais tempo para estudar e descansar</h5>
+                <img src="assets/print-vendas-a-noite.jpeg" alt="Notificações Shopify de pedidos chegando à noite">
+              </figure>
+              <figure>
+                <h5 class="fig-heading">Mensagem de ausência automática no WhatsApp com UX Writing guiando o cliente ao site fora do horário de atendimento</h5>
+                <img src="assets/seo-uxwriting.jpeg" alt="WhatsApp com copy direcionando ao site">
+              </figure>
+              <ul class="sol-list">
+                <li>✓ E-commerce criado para receber clientes à noite: compra self-service, sem atendimento manual</li>
+                <li>✓ UX Writing guiando o cliente no WhatsApp e dentro do site</li>
+                <li>✓ SEO nas fotos melhorando preview no catálogo e aumentando CTR</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">UX Writing</span>
+                <span class="tag">SEO</span>
+                <span class="tag">e-commerce</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Problema 02</p>
+              <h4 class="card-title">Muitos clientes, baixa conversão</h4>
+              <p class="card-desc">Desk research + benchmark revelaram que clientes buscam ambientes completos e que montagem é diferencial decisivo.</p>
+              <figure>
+                <h5 class="fig-heading">Com a adoção do serviço de montagem, ficamos parelhos aos concorrentes que já ofereciam esse diferencial.</h5>
+                <img src="assets/benchmark.png" alt="Benchmark antes e depois de aplicar UX">
+              </figure>
+              <div class="info-box">
+                <p class="box-label">Insights da desk research</p>
+                <ul class="insight-list">
+                  <li>📦 Anúncios de ambientes convertem mais que produtos isolados</li>
+                  <li>🛋️ Catálogo reorganizado por ambiente: Sala, Quarto, Cozinha</li>
+                  <li>🔧 Montagem integrada como diferencial competitivo nacional</li>
+                </ul>
+                <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem;line-height:1.6;">Análise construída com dados internos da Urso combinados com referências públicas do setor moveleiro brasileiro: IBGE, IEMI, Sebrae, ABIMÓVEL e portais especializados.</p>
+                <div class="btn-row" style="margin-top:.75rem">
+                  <a href="https://docs.google.com/document/d/1G1tBBZl36MiaJxPdhAE-LrDxyX0GOTMFBySgvstVGcU/edit" target="_blank" class="btn btn-primary" style="font-size:.82rem">ver desk research completa</a>
+                </div>
+              </div>
+              <figure>
+                <h5 class="fig-heading">Framework completo disponível para download ou visualização no Figma.</h5>
+                <img src="assets/multiplo-alinhamento.png" alt="Framework Múltiplo Alinhamento do serviço de montagem">
+              </figure>
+              <div class="btn-row">
+                <a href="https://drive.google.com/file/d/1RaCIFCcegSqTw-ey16a9FX7375a014YA/view?usp=sharing" target="_blank" class="btn btn-ghost">⬇ baixar framework</a>
+                <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20112-956" target="_blank" class="btn btn-figma">
+                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true">
+                    <path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/>
+                  </svg>
+                  ver no Figma
+                </a>
+              </div>
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">principal insight</p>
+                <p>Oferecer montagem já na negociação: produto + entrega + montagem num orçamento único. Reduz o gap e simplifica a decisão do cliente.</p>
+              </div>
+              <div class="tags">
+                <span class="tag">desk research</span>
+                <span class="tag">benchmark</span>
+                <span class="tag">múltiplo alinhamento</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Problema 03</p>
+              <h4 class="card-title">Sem dados, sem método</h4>
+              <p class="card-desc">Nenhum acompanhamento de comportamento para embasar decisões de design e priorização de melhorias.</p>
+              <figure>
+                <h5 class="fig-heading">Top pages no Google Analytics 4 (GA4): Home, Guarda-Roupas e Cozinhas priorizadas para monitoramento no Hotjar</h5>
+                <img src="assets/google-analytics4.jpeg" alt="Painel Google Analytics 4 com páginas mais acessadas">
+              </figure>
+              <figure>
+                <h5 class="fig-heading">Apenas 60,1% dos usuários chegavam até os produtos porque o texto SEO no topo empurrava o catálogo para baixo e o escondia na primeira vista.</h5>
+                <img src="assets/hotjar-attention.png" alt="Hotjar scrollmap antes da melhoria">
+              </figure>
+              <div class="info-box">
+                <p class="box-label">diagnóstico</p>
+                <p>O texto SEO extenso no topo da página empurrava os produtos para baixo do fold, escondendo o catálogo logo na primeira visão do usuário.</p>
+              </div>
+              <h5 class="fig-heading">v1 → v2 → v3: o objetivo era melhorar a usabilidade mostrando os móveis e as opções de filtro logo de cara, para o cliente encontrar o que procura sem esforço</h5>
+              <div class="img-wide">
+                <img src="assets/melhoria-craft.png" alt="Evolução do craft da interface v1 v2 v3">
+              </div>
+              <p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem">👆 Clique na imagem para ampliar · arraste para o lado para ver todas as versões</p>
+              <figure>
+                <h5 class="fig-heading">Após a melhoria: 100% dos usuários chegam até os produtos.</h5>
+                <img src="assets/hotjar-attention2.png" alt="Hotjar scrollmap após melhoria">
+              </figure>
+              <ul class="sol-list">
+                <li>✓ Seletor visual de tipo de modelo (casal, solteiro, espelhado, infantil)</li>
+                <li>✓ Filtro de preço adicionado</li>
+                <li>✓ Imagens dos móveis visíveis já na primeira dobra</li>
+              </ul>
+              <div class="info-box accent">
+                <p class="box-label">decisão técnica</p>
+                <p>O texto SEO foi ocultado visualmente na interface mas permanece ativo no HTML, mantendo o ranqueamento nos buscadores sem prejudicar a experiência do usuário.</p>
+              </div>
+              <div class="tags">
+                <span class="tag">GA4</span><span class="tag">Hotjar</span><span class="tag">CRO</span><span class="tag">UI craft</span><span class="tag">SEO</span>
+              </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-1-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot done"></span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-body">
+            <h3>Estratégia &amp; Arquitetura</h3>
+            <p>Estruturando o modelo de negócio e a lógica de conversão.</p>
+            <button class="expand-btn" data-target="step-2-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-2-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Atuei como estrategista de negócio. Construí os 6 artefatos (BMC, VPC, Funil, Matriz, Priorização e apresentação para os donos) para estruturar o modelo antes de tocar em qualquer interface. Conduzi a reunião de alinhamento com os donos da Urso, que viabilizou a implementação do serviço de montagem.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Artefato 01</p>
+              <h4 class="card-title">Business Model Canvas</h4>
+              <p class="card-desc">Modelo de negócio completo: parceiros, atividades chave, proposta de valor, canais, segmentos e estrutura de custo.</p>
+              <figure><img src="assets/bmc.png" alt="Business Model Canvas da Urso Móveis"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 02</p>
+              <h4 class="card-title">Value Proposition Canvas</h4>
+              <p class="card-desc">Mapeamento das dores e ganhos do cliente carioca cruzado com a proposta de valor da Urso.</p>
+              <figure><img src="assets/vpc.png" alt="Value Proposition Canvas da Urso Móveis"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 03</p>
+              <h4 class="card-title">Funil de Vendas: Site + WhatsApp</h4>
+              <p class="card-desc">Dois funis integrados com remarketing cruzado, dobrando a chance de conversão em cada canal.</p>
+              <figure><img src="assets/funil.png" alt="Funil de vendas Site e WhatsApp"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 04</p>
+              <h4 class="card-title">Matriz Impacto × Esforço</h4>
+              <p class="card-desc">Priorização do cadastro de produtos no catálogo: Quick Wins primeiro, Major Projects depois.</p>
+              <figure><img src="assets/matriz-impacto-esfor%C3%A7o.png" alt="Matriz impacto esforço"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 05</p>
+              <h4 class="card-title">Priorização de Problemas</h4>
+              <p class="card-desc">Backlog priorizado por score de 1 a 13. Algumas dessas oportunidades ainda estão no forno. O trabalho continua.</p>
+              <figure><img src="assets/Prioriza%C3%A7%C3%A3o%20de%20problemas.png" alt="Priorização de problemas por score"></figure>
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">🗺️ Roadmap</p>
+                <p><strong style="color:var(--text-primary)">MVP:</strong> e-commerce funcional com catálogo, frete calculável, consulta de orçamento de montagem pelo site e integração WhatsApp. Tudo o que veio depois é melhoria contínua sobre essa base.<br><br>Os itens marcados com ✓ no backlog foram priorizados e já estão concluídos, implementados ao longo deste case. Os próximos no planejamento incluem campanhas de anúncio com produtos de ticket alto em formato de vídeo, o formato que mais converte para esse tipo de produto, com foco nas personas João &amp; Leticia, que buscam móveis mais bonitos e de qualidade melhor para montar o lar completo.</p>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Artefato 06</p>
+              <h4 class="card-title">Apresentação para os Donos da Urso Móveis</h4>
+              <p class="card-desc">Durante todo o projeto, tive 100% de autonomia. Pesquisa, design, implementação: tudo decidido e executado por uma só pessoa: eu. Mas criar um serviço de montagem do zero exigia uma decisão que não era só minha. Então sentei com os donos da Urso, apresentei o problema, a solução e os resultados que poderíamos gerar.</p>
+
+              <div class="info-box accent">
+                <p class="box-label">Estrutura da apresentação</p>
+                <ul class="insight-list">
+                  <li>🔴 <strong style="color:var(--text-primary)">Problema:</strong> clientes chegando mas não convertendo, concorrentes já oferecendo montagem</li>
+                  <li>🟡 <strong style="color:var(--text-primary)">Solução:</strong> integrar montagem ao fluxo de compra como produto próprio do ecossistema Urso</li>
+                  <li>🟢 <strong style="color:var(--text-primary)">Resultados projetados:</strong> redução do risco percebido, aumento de CRO e geração de prova social</li>
+                </ul>
+              </div>
+
+              <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--r-lg);border:1px solid var(--border);margin:1.5rem 0;">
+                <iframe
+                  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fslides%2FomhQrtuF8iIjwzhsDXRGRu%2Fursoweb---pgv%3Fnode-id%3D2002-30"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <p style="font-size:.75rem;color:var(--text-muted);margin-top:-.5rem;margin-bottom:.5rem">👆 Use as setas para navegar pelos slides</p>
+
+              <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">A precificação do serviço de montagem está no quadro do Miro, no último slide da apresentação acima.</p>
+              <div class="tags">
+                <span class="tag">Stakeholder alignment</span>
+                <span class="tag">Apresentação</span>
+                <span class="tag">Ideação colaborativa</span>
+                <span class="tag">Figma Slides</span>
+              </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-2-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot done"></span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-body">
+            <h3>Jornadas &amp; Personas</h3>
+            <p>2 personas reais + jornada de experiência + jornadas individuais.</p>
+            <button class="expand-btn" data-target="step-3-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-3-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Três anos como vendedor da Urso pelo WhatsApp me deram contato direto com os clientes. Oito meses de estudo em UX (e contando) transformaram esse conhecimento em personas e jornadas reais.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Artefato 01</p>
+              <h4 class="card-title">Personas</h4>
+              <p class="card-desc">João &amp; Leticia (casal mudando de casa) e Pietra (renovando ambiente). Personas construídas a partir de atendimentos reais no WhatsApp. Como vendedor comissionado da Urso, tive contato direto com esses perfis de clientes e extraí os comportamentos, dores e motivações que estruturam cada persona.</p>
+              <figure><img src="assets/personas.png" alt="Personas João e Leticia e Pietra"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 02</p>
+              <h4 class="card-title">Jornada de Experiência</h4>
+              <p class="card-desc">Mapeamento com 3 atores: Cliente, Vendedor e Entregador. Cada etapa da jornada foi trabalhada com melhorias reais:</p>
+              <ul class="insight-list" style="margin-bottom:1rem">
+                <li>🎯 <strong style="color:var(--text-primary)">Estímulo:</strong> criativos com ambientes completos aumentando o desejo pelo produto</li>
+                <li>🛋️ <strong style="color:var(--text-primary)">Escolher modelo:</strong> catálogo dinâmico no site com filtros visuais por categoria e preço (evidenciado em Research &amp; Strategy)</li>
+                <li>🛒 <strong style="color:var(--text-primary)">Finalizar compra:</strong> opção de compra pelo site, com atendimento offline</li>
+                <li>📲 <strong style="color:var(--text-primary)">Aguardar entregador:</strong> mensagem automática no WhatsApp confirmando entrega e horário</li>
+                <li>🔧 <strong style="color:var(--text-primary)">Ajustar montador:</strong> serviço de montagem integrado ao ecossistema de compra como produto próprio</li>
+                <li>⭐ <strong style="color:var(--text-primary)">Pós-montagem:</strong> survey de satisfação com cupom de desconto para próxima compra, gerando prova social e fidelização</li>
+              </ul>
+              <figure>
+                <h5 class="fig-heading">Criativo com ambiente completo: móvel no contexto real para gerar desejo antes da visita ao site</h5>
+                <img src="assets/estimulo.jfif" alt="Criativo de estímulo com ambiente decorado">
+              </figure>
+              <figure><img src="assets/jornada%20de%20experiencia.png" alt="Jornada de experiência com 3 atores"></figure>
+              <figure>
+                <h5 class="fig-heading">Confirmação de entrega e horário enviada pelo WhatsApp após a compra no site</h5>
+                <img src="assets/whatsapp-feedback.png" alt="Mensagem de confirmação de entrega no WhatsApp">
+              </figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 03</p>
+              <h4 class="card-title">Jornada do Usuário: João &amp; Leticia</h4>
+              <p class="card-desc">5 fases com sentimentos, falas e oportunidades. O trabalho continua: estamos desenvolvendo campanhas para oferecer frete grátis em produtos de ticket alto, reduzindo a barreira de compra para esse perfil de cliente.</p>
+              <div class="img-wide">
+                <img src="assets/jornada%20do%20usuario-personacasal.png" alt="Jornada do usuário persona casal">
+              </div>
+            </div>
+            <div>
+              <p class="card-num">Artefato 04</p>
+              <h4 class="card-title">Jornada do Usuário: Pietra</h4>
+              <p class="card-desc">Foco em renovação de ambiente e produtos de médio-baixo ticket.</p>
+              <div class="img-wide">
+                <img src="assets/jornada%20do%20usuario-personasolteiro.png" alt="Jornada do usuário persona solteira">
+              </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-3-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot done"></span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-body">
+            <h3>Wireframes &amp; UI</h3>
+            <p>Do sitemap ao design system. Decisões visuais documentadas.</p>
+            <button class="expand-btn" data-target="step-4-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-4-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Designer solo. Do rabisco frame ao design system completo, incluindo decisões de tipografia, cor e componentes implementados diretamente no tema Shopify.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Artefato 01</p>
+              <h4 class="card-title">Sitemap</h4>
+              <p class="card-desc">Estrutura completa das páginas: Landing Page, Categorias e Página do Móvel com todos os componentes mapeados.</p>
+              <div class="img-wide"><img src="assets/sitemap.png" alt="Sitemap do site Urso Móveis"></div>
+              <div class="btn-row">
+                <a href="https://drive.google.com/file/d/1v9qJq-Uqydi-9mFQi2Ga3SI5JIzMwpl2/view?usp=sharing" target="_blank" class="btn btn-drive">ver completo no Drive</a>
+              </div>
+            </div>
+            <div>
+              <p class="card-num">Artefato 02</p>
+              <h4 class="card-title">Guia de Cores</h4>
+              <p class="card-desc">Sistema de cores com tokens: laranja primário #f2790e, marrom, bege e escala de cinzas. Todos com ratios de contraste WCAG.</p>
+              <figure><img src="assets/cores.png" alt="Guia de cores do design system Urso"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 03</p>
+              <h4 class="card-title">Tipografia</h4>
+              <p class="card-desc">Poppins para títulos e displays. Noto Sans Georgian para corpo de texto. Escala tipográfica de 80px até 18px.</p>
+              <figure><img src="assets/tipografia.png" alt="Guia de tipografia do design system Urso"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 04</p>
+              <h4 class="card-title">Energia da Cor Laranja</h4>
+              <p class="card-desc">Decisão de cor embasada em pesquisa cultural: laranja representa equilíbrio, coragem, energia, aprendizado e desejo.</p>
+              <figure><img src="assets/colours-in-culture.png" alt="Colours in Culture — significado do laranja"></figure>
+            </div>
+            <div>
+              <p class="card-num">Artefato 05</p>
+              <h4 class="card-title">Sites de Inspiração</h4>
+              <p class="card-desc">Benchmark visual de e-commerces de móveis: padrões de layout, hierarquia de produto, filtros e prova social.</p>
+              <figure><img src="assets/Inspira%C3%A7%C3%B5es.png" alt="Sites de inspiração para o design do e-commerce"></figure>
+              <div class="btn-row">
+                <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3582" target="_blank" class="btn btn-figma">
+                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/></svg>
+                  ver no Figma
+                </a>
+              </div>
+            </div>
+            <div>
+              <p class="card-num">Artefato 06</p>
+              <h4 class="card-title">Rabisco Frame</h4>
+              <p class="card-desc">Primeiro rascunho das telas. Exploração de layout antes de partir para o protótipo de alta fidelidade.</p>
+              <figure><img src="assets/rabiscoframe.png" alt="Rabisco frame das telas do e-commerce"></figure>
+              <div class="btn-row">
+                <a href="https://www.figma.com/design/adc1NckWGA45poJXbA5gXf/Urso-M%C3%B3veis---Design-System?node-id=20121-3521" target="_blank" class="btn btn-figma">
+                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><path d="M3 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1a2 2 0 0 0 0 4h2V1H1zm2 4H1a2 2 0 0 0 0 4h2V5zm0 4H1a2 2 0 1 0 2 2V9zm4-8H5v4h2a2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0-4" fill="white"/></svg>
+                  ver no Figma
+                </a>
+              </div>
+            </div>
+            <div>
+              <p class="card-num">Artefato 07</p>
+              <h4 class="card-title">Barra de Menu: Antes e Depois</h4>
+              <p class="card-desc">Menu em lista simplificado para grid visual 3D com ícones por categoria. Menos opções visíveis, mais desejo e clareza de escolha.</p>
+              <figure><img src="assets/barramenu.png" alt="Barra de menu antes e depois da melhoria"></figure>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-4-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot active"></span>
+          </div>
+          <div class="step-body">
+            <h3>Implementação &amp; CRO</h3>
+            <p>Shopify + Claude Code + ciclo contínuo de melhorias.</p>
+            <button class="expand-btn" data-target="step-5-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-5-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Atuei como copiloto. Descrevi as mudanças em português, revisei os outputs e validei cada alteração no ar. O Claude Code escreveu e aplicou o código Liquid e CSS.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Artefato 01</p>
+              <h4 class="card-title">Painel Shopify: controle operacional</h4>
+              <p class="card-desc">O Shopify centraliza hospedagem, pedidos, produtos, clientes, marketing, descontos, análises e Pixel para remarketing. Tudo num ambiente admin seguro e controlado.</p>
+              <figure><img src="assets/shopify-panel.png" alt="Painel admin do Shopify da Urso Móveis"></figure>
+              <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem">Canais ativos: Loja virtual · Agêntico · Facebook &amp; Instagram · Judge.me Reviews</p>
+            </div>
+            <div>
+              <p class="card-num">Artefato 02</p>
+              <h4 class="card-title">Search &amp; Discovery: dados de pesquisa interna</h4>
+              <p class="card-desc">Monitoramento do que os clientes buscam no site: revela oportunidades de catálogo e gaps de produto em tempo real.</p>
+              <figure><img src="assets/searchdiscovery.png" alt="Painel Search and Discovery do Shopify"></figure>
+              <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem">Taxa de cliques 78,91% ↑8% · Taxa de compra 1,87% ↑66% · Gaps: guardaroupa, armário solteiro, móveis infantis</p>
+            </div>
+            <div>
+              <p class="card-num">Artefato 03</p>
+              <h4 class="card-title">Como funciona o Claude Code + Shopify CLI</h4>
+              <p class="card-desc" style="margin-bottom:1rem">Fluxo de implementação contínua sem depender de agência:</p>
+              <ol class="num-list">
+                <li><span>Tema da loja baixado localmente: arquivos .liquid, CSS e JSON do site real</span></li>
+                <li><span>Mudança descrita em português: Claude lê os arquivos, entende a estrutura e executa a alteração</span></li>
+                <li><span>Shopify CLI sobe só o arquivo modificado. Site atualiza em segundos</span></li>
+                <li><span>Hipótese validada ou descartada. Próxima iteração começa</span></li>
+              </ol>
+              <div class="info-box accent" style="margin-top:1rem">
+                <p class="box-label">por que isso importa pro CRO</p>
+                <p>Com esse ciclo, uma ideia de melhoria vai do pensamento ao ar em minutos. Botão em outro lugar, copy diferente, elemento removido: a gente testa rápido e segue com o que funciona.</p>
+              </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-5-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-dot-col">
+            <span class="step-dot active"></span>
+          </div>
+          <div class="step-body">
+            <h3>Agentes de IA no ChatGPT</h3>
+            <p>Agentes criados no ChatGPT para aumentar o desejo pelo produto e o ranqueamento de SEO.</p>
+            <button class="expand-btn" data-target="step-6-detail">ver detalhes</button>
+          </div>
+        </div>
+        <div class="step-detail" id="step-6-detail">
+          <div class="step-detail-inner">
+
+            <div class="step-role">
+              <span class="step-role-icon">🎯</span>
+              <p><strong>Meu papel:</strong> Criei e configurei os dois agentes do zero. Defini os prompts, testei os outputs e integrei ao fluxo operacional da loja como solução de escala.</p>
+            </div>
+
+            <div>
+              <p class="card-num">Agente 01</p>
+              <h4 class="card-title">Urso Fotógrafo</h4>
+              <p class="card-desc">É só jogar a foto do produto: o agente projeta o móvel num ambiente decorado, gerando desejo sem precisar de fotógrafo ou set.</p>
+              <figure>
+                <h5 class="fig-heading">Antes e depois: produto isolado vs. móvel projetado no ambiente pelo agente</h5>
+                <img src="assets/UrsoFot%C3%B3grafo.png" alt="Urso Fotógrafo — IA projetando móvel em ambiente">
+              </figure>
+              <div class="info-box accent">
+                <p class="box-label">valor gerado</p>
+                <p>Aumenta o desejo pelo produto com a imagem no ambiente, sem depender de fotógrafo ou set de decoração.</p>
+              </div>
+              <div class="tags">
+                <span class="tag">ChatGPT</span>
+                <span class="tag">Geração de imagem</span>
+                <span class="tag">CRO</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Agente 02</p>
+              <h4 class="card-title">Copy Urso Web</h4>
+              <p class="card-desc">O agente lê a descrição técnica do produto e transforma em copy pronto para o site, negritando automaticamente os detalhes que mais influenciam a decisão de compra:</p>
+              <ul class="sol-list">
+                <li>📐 Medidas exatas do produto</li>
+                <li>🪵 Material e acabamento</li>
+                <li>🔩 Tipo de corrediça e mecanismo</li>
+              </ul>
+              <figure>
+                <h5 class="fig-heading">Descrição técnica transformada em copy com destaques em negrito</h5>
+                <img src="assets/CopyUrsoweb1.png" alt="Copy Urso Web — descrição técnica virou copy">
+              </figure>
+              <figure>
+                <h5 class="fig-heading">Resultado final publicado na página do produto</h5>
+                <img src="assets/CopyUrsoweb2.png" alt="Copy Urso Web — resultado na página do produto">
+              </figure>
+              <div class="info-box accent">
+                <p class="box-label">valor gerado</p>
+                <p>Aumenta o ranqueamento de SEO com a copy: cada produto novo já sai com descrição otimizada e destaques em negrito, sem esforço manual.</p>
+              </div>
+              <div class="tags">
+                <span class="tag">ChatGPT</span>
+                <span class="tag">SEO</span>
+                <span class="tag">UX Writing</span>
+              </div>
+            </div>
+
+            <div style="padding-top:.5rem">
+              <button class="expand-btn is-open" data-target="step-6-detail">ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /stepper -->
+
+    <div class="metrics-grid" id="resultados-urso">
+      <div class="metric-card">
+        <span class="metric-val">3.8k</span>
+        <span class="metric-lbl">usuários/mês</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val">377</span>
+        <span class="metric-lbl">vendas</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val">0,45%</span>
+        <span class="metric-lbl">CRO no começo do projeto</span>
+      </div>
+      <div class="metric-card hl">
+        <span class="metric-val">1,23%</span>
+        <span class="metric-lbl">CRO agora ↑</span>
+      </div>
+    </div>
+
+    <a href="https://ursomoveis.com" target="_blank" class="btn btn-primary btn-live" style="margin-top:2rem;">
+      🌐&nbsp; Ver site ao vivo: ursomoveis.com
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ================================================
+     CASE 2 — PARIS MULTIMARCAS
+================================================ -->
+<section id="paris">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="case-header">
+      <p class="case-label">Case 02</p>
+      <h2 class="case-title">Paris Multimarcas</h2>
+      <p class="case-meta">Loja de roupas esportivas no RJ. Gestão de tráfego pago + criação e evolução contínua do site no Shopify.</p>
+    </div>
+
+    <!-- Mockup -->
+    <figure style="margin-bottom:1.25rem;">
+      <img src="assets/paris-mockup.png" alt="Mockup do site Paris Multimarcas">
+    </figure>
+
+    <!-- Label + Métricas destaque -->
+    <h3 style="font-family:var(--font-paris);font-size:1.35rem;font-weight:800;color:var(--white);margin-bottom:.6rem;letter-spacing:.01em;">Resultados do primeiro mês</h3>
+    <div class="metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:0;margin-bottom:.75rem;">
+      <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento no 1º mês</span></div>
+      <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS do 1º mês</span></div>
+    </div>
+
+    <!-- Papel -->
+    <div class="step-role" style="margin-bottom:1.5rem;">
+      <span class="step-role-icon">🎯</span>
+      <p><strong>Meu papel:</strong> Freela com escopo duplo: gestão de tráfego pago (Meta Ads) com campanha centrada em regatas NBA, camisas de futebol e streetwear, e criação e evolução contínua do site no Shopify. Da configuração da loja às melhorias de craft de UI mês a mês.</p>
+    </div>
+
+    <!-- Funil -->
+    <div class="funil-box">
+      <p class="funil-label">🔽 Funil de vendas do 1º mês</p>
+      <div class="funil-steps">
+        <div class="funil-step">
+          <div class="funil-bar s1">👁️ Visitantes</div>
+          <span class="funil-num">9.480</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s2">🛒 Add to cart <span class="funil-pct">7,4% dos visitantes</span></div>
+          <span class="funil-num">702</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s3">💳 Checkout <span class="funil-pct">79% dos que adicionaram</span></div>
+          <span class="funil-num">554</span>
+        </div>
+        <div class="funil-step">
+          <div class="funil-bar s4">✅ Vendas concluídas <span class="funil-pct">7,9% do checkout</span></div>
+          <span class="funil-num">44</span>
+        </div>
+      </div>
+    </div>
+    <p class="period-note">📅 Período: 12 jan a 12 fev de 2026 · Fonte: Shopify Analytics</p>
+
+    <!-- Contexto -->
+    <div class="paris-section">
+      <p class="section-label">Contexto</p>
+      <h3 class="section-title">O que é a Paris Multimarcas</h3>
+      <p class="section-desc">Loja física e online de roupas esportivas no Rio de Janeiro. Catálogo com futebol, NBA, streetwear e marcas como Jordan, Adidas e Lacoste. A campanha foi centrada em regatas NBA, camisas de futebol e streetwear ao longo dos últimos cinco meses.</p>
+      <figure>
+        <h5 class="fig-heading">Nuvem de produtos mais pesquisados: Flamengo, Tênis, Conjunto e times NBA dominam o vocabulário dos clientes</h5>
+        <img src="assets/nuvemparis.jpeg" alt="Nuvem de palavras dos produtos mais buscados na Paris Multimarcas">
+      </figure>
+      <div class="tags">
+        <span class="tag">Meta Ads</span>
+        <span class="tag">NBA</span>
+        <span class="tag">Futebol</span>
+        <span class="tag">Shopify</span>
+        <span class="tag">Streetwear</span>
+      </div>
+    </div>
+
+    <!-- Design System -->
+    <div class="paris-section">
+      <p class="section-label">Design System</p>
+      <h3 class="section-title">Identidade Visual</h3>
+      <p class="section-desc">Paleta construída em cima da identidade Jordan: vermelho primário #F50402, preto e branco. Tipografia Montserrat Bold para títulos e Inter para corpo, reforçando a energia esportiva da marca.</p>
+      <div class="style-grid">
+        <figure>
+          <h5 class="fig-heading">Guia de cores</h5>
+          <img src="assets/coresparis.jpeg" alt="Guia de cores Paris Multimarcas">
+        </figure>
+        <figure>
+          <h5 class="fig-heading">Tipografia</h5>
+          <img src="assets/tipografiaparis.jpeg" alt="Guia de tipografia Paris Multimarcas">
+        </figure>
+      </div>
+      <div class="tags">
+        <span class="tag">Vermelho #F50402</span>
+        <span class="tag">Montserrat Bold</span>
+        <span class="tag">Inter</span>
+        <span class="tag">Jordan Brand</span>
+      </div>
+    </div>
+
+    <!-- Calculadora CEP -->
+    <div class="paris-section">
+      <p class="section-label">Decisão de UX</p>
+      <h3 class="section-title">Calculadora de Frete via API Frenet</h3>
+      <p class="section-desc">Um dos principais motivos de abandono em e-commerces de roupa é não saber o frete antes de chegar no checkout. Implementei uma calculadora de frete na página de produto integrada à API da Frenet, mostrando Sedex e PAC com prazo estimado antes do cliente adicionar ao carrinho.</p>
+      <div class="step-role">
+        <span class="step-role-icon">🎯</span>
+        <p><strong>Arquitetura:</strong> A integração usa um Cloudflare Worker como proxy, mantendo a chave da API Frenet escondida do cliente. Um cuidado de segurança importante: sem o proxy, a chave ficaria exposta no front-end e qualquer pessoa poderia extrair os dados internos da plataforma. O componente foi implementado diretamente no tema Shopify em Liquid e CSS, fruto de melhoria contínua do sistema.</p>
+      </div>
+      <figure>
+        <h5 class="fig-heading">Calculadora de frete com Sedex e PAC: o cliente vê o valor e o prazo antes de adicionar ao carrinho</h5>
+        <img src="assets/calculadoracep.png" alt="Calculadora de frete Paris Multimarcas integrada via API Frenet">
+      </figure>
+      <div class="info-box accent">
+        <p class="box-label">Impacto na jornada</p>
+        <p>Saber o frete antes do checkout reduz a fricção de descoberta e aumenta a confiança na decisão de compra. O cliente decide com mais segurança antes de adicionar ao carrinho.</p>
+      </div>
+      <div class="tags">
+        <span class="tag">API Frenet</span>
+        <span class="tag">Cloudflare Worker</span>
+        <span class="tag">Cyber Security</span>
+        <span class="tag">Liquid</span>
+        <span class="tag">Redução de fricção</span>
+        <span class="tag">Shopify</span>
+      </div>
+    </div>
+
+    <!-- Craft de UI -->
+    <div class="paris-section">
+      <p class="section-label">Craft de UI</p>
+      <h3 class="section-title">Melhorias contínuas mês a mês</h3>
+      <p class="section-desc">O site evoluiu progressivamente. Cada atualização foi documentada e comunicada ao cliente com versão numerada, criando transparência e ritmo de melhoria constante.</p>
+      <figure style="margin-bottom:1.5rem">
+        <h5 class="fig-heading">Atualizações de Fevereiro: v1.1 a v1.4</h5>
+        <img src="assets/attfevereiro.jpeg" alt="Atualizações de fevereiro do site Paris Multimarcas v1.1 a v1.4">
+      </figure>
+      <div class="updates-grid">
+        <div class="update-card"><div class="update-version">v1.1</div><p class="update-desc">🏀 Seletor de times adicionado na página de coleção NBA: cliente filtra por Lakers, Bulls, Celtics e mais</p></div>
+        <div class="update-card"><div class="update-version">v1.2</div><p class="update-desc">🏬 Botão de catálogo em destaque · Botão "Comprar" em vermelho · Preços em verde claro para contraste</p></div>
+        <div class="update-card"><div class="update-version">v1.3</div><p class="update-desc">🤖 Agente de IA no ChatGPT que analisa a foto da roupa e gera descrições persuasivas automaticamente</p></div>
+        <div class="update-card"><div class="update-version">v1.4</div><p class="update-desc">🏷️ Botão de catálogo atualizado com logo Air Jordan · Valor das parcelas exibido abaixo do preço total</p></div>
+      </div>
+      <figure style="margin-top:1.5rem;margin-bottom:1.5rem">
+        <h5 class="fig-heading">Atualizações de Março/Abril: v2.1 a v2.3</h5>
+        <img src="assets/attmarço.jpeg" alt="Atualizações de março e abril do site Paris Multimarcas v2.1 a v2.3">
+      </figure>
+      <div class="updates-grid">
+        <div class="update-card"><div class="update-version">v2.1</div><p class="update-desc">🏀 Calculadora de frete na página de produto: cliente vê Sedex e PAC com prazo antes de adicionar ao carrinho</p></div>
+        <div class="update-card"><div class="update-version">v2.2</div><p class="update-desc">🏬 Barra inferior fixa na página de produto com valor e botão de comprar, melhorando a usabilidade mobile</p></div>
+        <div class="update-card" style="grid-column:1/-1"><div class="update-version">v2.3</div><p class="update-desc">⚽ Seletor de ligas na página de futebol: La Liga, Premier League, Serie A, Bundesliga, Ligue 1 e Brasileirão. O cliente filtra por liga e encontra o time mais rápido</p></div>
+      </div>
+      <div class="tags" style="margin-top:1.25rem">
+        <span class="tag">Shopify Liquid</span>
+        <span class="tag">CSS</span>
+        <span class="tag">UX Mobile</span>
+        <span class="tag">Iteração contínua</span>
+        <span class="tag">Claude Code</span>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="paris-section">
+      <p class="section-label">Resultados</p>
+      <h3 class="section-title">Média de resultados desde janeiro</h3>
+      <p class="section-desc">Dados em atualização. Os números abaixo refletem a média acumulada desde o início do projeto em janeiro de 2026.</p>
+      <div class="results-grid">
+        <div class="metric-card hl"><span class="metric-val">R$10.289</span><span class="metric-lbl">Faturamento 1º mês</span></div>
+        <div class="metric-card hl"><span class="metric-val">4,8x</span><span class="metric-lbl">ROAS 1º mês</span></div>
+        <div class="metric-card"><span class="metric-val">44</span><span class="metric-lbl">Vendas no site</span></div>
+        <div class="metric-card"><span class="metric-val">9.480</span><span class="metric-lbl">Visitantes</span></div>
+        <div class="metric-card"><span class="metric-val">702</span><span class="metric-lbl">Add to cart</span></div>
+        <div class="metric-card"><span class="metric-val">554</span><span class="metric-lbl">Chegaram ao checkout</span></div>
+        <div class="metric-card"><span class="metric-val">R$2.140</span><span class="metric-lbl">Investimento em ads</span></div>
+        <div class="metric-card hl"><span class="metric-val">~R$10k</span><span class="metric-lbl">Média mensal · em andamento</span></div>
+      </div>
+      <p style="font-size:.75rem;color:var(--text-muted);margin-top:1rem">* Dados sendo atualizados · Fonte: Shopify Analytics + Meta Ads Manager</p>
+      <figure style="margin-top:1.5rem">
+        <h5 class="fig-heading">Faturamento de vendas pagas no período, relatório via IA de análise do Shopify</h5>
+        <img src="assets/faturamentoparis1mes.png" alt="Faturamento de R$ 10.289,52 no primeiro mês da Paris Multimarcas">
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================
+     CTA
+================================================ -->
+<section id="contato">
+  <div class="container">
+    <h2>Bora construir juntos?</h2>
+    <div class="cta-btns">
+      <a href="https://www.linkedin.com/in/paulo-victor-pereira/" target="_blank" class="btn btn-primary">LinkedIn</a>
+      <a href="mailto:paulovictorcarregal@gmail.com" class="btn btn-ghost">E-mail</a>
+      <a href="https://wa.me/5521974395509" target="_blank" class="btn btn-ghost">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Paulo Pereira · UX Designer · Rio de Janeiro · 2026</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" aria-label="Fechar">×</button>
+  <img src="" alt="">
+</div>
+
+<script>
+  // Lightbox
+  const lb    = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img');
+
+  function openLb(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  document.querySelectorAll('figure img, .img-wide img').forEach(img => {
+    img.addEventListener('click', () => openLb(img.src, img.alt));
+  });
+
+  lb.addEventListener('click', e => {
+    if (e.target === lb || e.target.id === 'lb-close') closeLb();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLb();
+  });
+
+  // Accordion — sincroniza todos os botões do mesmo step
+  document.querySelectorAll('.expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id     = btn.getAttribute('data-target');
+      const detail = document.getElementById(id);
+      const open   = detail.classList.toggle('is-open');
+
+      // Altura real do conteúdo para a transição não cortar
+      if (open) {
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      } else {
+        detail.style.maxHeight = detail.scrollHeight + 'px'; // parte do valor atual antes de colapsar
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { detail.style.maxHeight = '0'; });
+        });
+      }
+
+      document.querySelectorAll(`.expand-btn[data-target="${id}"]`).forEach(b => {
+        b.textContent = open ? 'ocultar' : 'ver detalhes';
+        b.classList.toggle('is-open', open);
+      });
+      // Ao fechar: volta ao topo do step (descontando a nav fixa)
+      if (!open) {
+        const stepEl = detail.closest('.step');
+        const top = stepEl.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
