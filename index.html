@@ -838,6 +838,63 @@
     .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 
     /* ================================================
+       AGENTE WHATSAPP — robô animado
+    ================================================ */
+    .robot-showcase {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      margin: 1rem 0;
+    }
+    .robot-emoji {
+      font-size: 3.8rem;
+      display: inline-block;
+      animation: robotFloat 2.6s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(242,121,14,.45));
+    }
+    @keyframes robotFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50%       { transform: translateY(-14px) rotate(2deg); }
+    }
+    .robot-status {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .7rem;
+      color: #4ade80;
+      font-weight: 700;
+      margin-top: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .robot-dot {
+      width: 7px; height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: robotPulse 1.3s ease-in-out infinite;
+    }
+    @keyframes robotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .3; transform: scale(.65); }
+    }
+    .car-block { margin: 1.25rem 0; }
+    .car-label {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: .3rem;
+    }
+    .car-text {
+      font-size: .87rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ================================================
        LIGHTBOX
     ================================================ */
     #lightbox {
@@ -1743,6 +1800,47 @@
                 <span class="tag">ChatGPT</span>
                 <span class="tag">SEO</span>
                 <span class="tag">UX Writing</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="card-num">Agente 03</p>
+              <h4 class="card-title">Agente de Vendas no WhatsApp</h4>
+              <p class="card-desc">A loja perdia venda toda noite e fim de semana. Qualquer lead que chegava fora do horário ficava sem resposta até o dia seguinte. Criei um agente de IA que resolve isso do começo ao fim, sem intervenção humana.</p>
+
+              <div class="robot-showcase">
+                <div class="robot-emoji">🤖</div>
+                <div>
+                  <div class="robot-status">
+                    <span class="robot-dot"></span>
+                    Operando agora · 24h · 7 dias
+                  </div>
+                </div>
+              </div>
+
+              <div class="car-block">
+                <p class="car-label">Contexto</p>
+                <p class="car-text">A Urso Móveis recebia leads via WhatsApp sem conseguir atender fora do horário comercial. Fins de semana e madrugadas, quando boa parte dos anúncios converte, eram buracos negros de venda perdida.</p>
+              </div>
+              <div class="car-block">
+                <p class="car-label">Ação</p>
+                <p class="car-text">Desenvolvi e refinei um agente de vendas integrado ao WhatsApp Business capaz de conduzir o atendimento completo por conta própria: qualifica o lead, apresenta o catálogo, calcula frete e montagem por bairro, gera orçamento com parcelamento e fecha o pedido enviando a ficha de venda direto pro supervisor.</p>
+              </div>
+              <div class="car-block">
+                <p class="car-label">Resultado</p>
+                <p class="car-text">Na primeira semana de testes em campanha real, o agente conduziu 10 atendimentos completos e recebeu nota máxima — 5/5 — em todos os feedbacks de NPS coletados automaticamente ao fim de cada venda. Operou sem parar, inclusive nas madrugadas e fins de semana.</p>
+              </div>
+
+              <a href="https://wa.me/5521971200993?text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio%20do%20Paulo%20e%20quero%20testar%20o%20agente%20de%20IA." target="_blank" class="btn btn-primary btn-live" style="display:flex;justify-content:center;margin-top:1.25rem;background:#25D366;">
+                💬&nbsp; Testar agente no WhatsApp
+              </a>
+
+              <div class="tags" style="margin-top:1.25rem">
+                <span class="tag">WhatsApp Business</span>
+                <span class="tag">Agente de IA</span>
+                <span class="tag">Vendas 24/7</span>
+                <span class="tag">NPS 5/5</span>
+                <span class="tag">Automação</span>
               </div>
             </div>
 
